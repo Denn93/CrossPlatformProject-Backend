@@ -1,0 +1,6 @@
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\bin\Debug\Crawlers.exe.config
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\obj\Debug\Crawlers.csprojResolveAssemblyReference.cache
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\bin\Debug\Crawlers.exe
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\bin\Debug\Crawlers.pdb
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\obj\Debug\Crawlers.exe
+c:\users\dennis\documents\visual studio 2012\Projects\Crawlers\Crawlers\obj\Debug\Crawlers.pdb
