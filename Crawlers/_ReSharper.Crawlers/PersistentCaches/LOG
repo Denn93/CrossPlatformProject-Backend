@@ -1,1 +1,5 @@
-2013/10/31-14:11:58.909 c3c Delete type=3 #1
+2013/11/06-11:41:28.898 11ec Recovering log #3
+2013/11/06-11:41:28.899 11ec Level-0 table #5: started
+2013/11/06-11:41:29.023 11ec Level-0 table #5: 39499 bytes OK
+2013/11/06-11:41:29.158 11ec Delete type=0 #3
+2013/11/06-11:41:29.159 11ec Delete type=3 #2

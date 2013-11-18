@@ -42,10 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AVacCrawler.cs" />
+    <Compile Include="Company.cs" />
     <Compile Include="Crawler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vacature.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="VacatureBankNl.cs" />
   </ItemGroup>
   <ItemGroup>
