@@ -10,20 +10,9 @@ namespace Crawlers
 {
     abstract class AVacCrawler
     {
-        /// <summary>
-        /// Protected String url bevat de url die de crawler nodig heeft
-        /// Protected String CrawlerData bevat de data gevonden door de UrlHandler
-        /// </summary>
-        protected String url;
-        protected String crawlerData;
-        protected List<Job> jobs;
-
-        protected int currentPage;
-        protected int pages;
- 
         protected AVacCrawler()
         {
-            jobs = new List<Job>();
+            Jobs = new List<Job>();
         }
 
         /// <summary>
@@ -37,46 +26,27 @@ namespace Crawlers
         public virtual String urlHandler(String url = null)
         {
             String result;
-            WebClient webClient = new System.Net.WebClient();
+            var webClient = new System.Net.WebClient();
 
             if (url == null)
-                result = webClient.DownloadString(this.url);
+                result = webClient.DownloadString(Url);
             else
                 result = webClient.DownloadString(url);
 
             return WebUtility.HtmlDecode(result);
         }
 
-        public String Url 
-        { 
-            set { url = String.Format(value, CurrentPage); } 
-        }
+        public string Url { protected get; set; }
 
-        public int CurrentPage 
-        {
-            set { currentPage = value; }
-            get { return currentPage; }
-        }
+        public int CurrentPage { get; set; }
 
-        public int Pages 
-        { 
-            get { return pages; } 
-            set { pages = value; } 
-        }
+        public int Pages { get; set; }
 
         /// <summary>
         /// CrawlerData Properties
         /// </summary>
-        public String CrawlerData
-        {
-            get { return crawlerData; }
-            set { crawlerData = value; }
-        }
+        public string CrawlerData { get; set; }
 
-        public List<Job> Jobs
-        {
-            get { return jobs; }
-            set { jobs = value; } 
-        }
+        public List<Job> Jobs { get; set; }
     }
 }

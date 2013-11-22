@@ -13,8 +13,11 @@ namespace Crawlers
         /// </summary>
         public void BuildCrawlers()
         {
-            AVacCrawler vacatureBankNl = new VacatureBankNl();
-            vacatureBankNl.Process();
+//            AVacCrawler vacatureBankNl = new VacatureBankNl();
+//            vacatureBankNl.Process();
+
+            AVacCrawler jobbirdCom = new JobbirdCom();
+            jobbirdCom.Process();
         }
 
         /// <summary>

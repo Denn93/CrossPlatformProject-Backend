@@ -8,56 +8,20 @@ namespace Crawlers
 {
     class Job
     {
-        /// <summary>
-        /// Properties for the Job class. All private variables with public getters and setters
-        /// </summary>
+        public int JobID { get; set; }
 
-        private int jobID;
+        public Company Company { get; set; }
 
-        public int JobID
-        {
-            get { return jobID; }
-            set { jobID = value; }
-        }
+        public string JobTitle { get; set; }
 
-        private Company company;
+        public string JobDescription { get; set; }
 
-        public Company Company
-        {
-            get { return company; }
-            set { company = value; }
-        }
+        public DateTime JobPlaceDate { get; set; }
 
-        private String jobTitle;
+        public DateTime JobEndDate { get; set; }
 
-        public String JobTitle
-        {
-            get { return jobTitle; }
-            set { jobTitle = value; }
-        }
+        public String JobHours { get; set; }
 
-        private String jobDescription;
-
-        public String JobDescription
-        {
-            get { return jobDescription; }
-            set { jobDescription = value; }
-        }
-
-        private DateTime jobPlaceDate;
-
-        public DateTime JobPlaceDate
-        {
-            get { return jobPlaceDate; }
-            set { jobPlaceDate = value; }
-        }
-
-        private DateTime jobEndDate;
-
-        public DateTime JobEndDate
-        {
-            get { return jobEndDate; }
-            set { jobEndDate = value; }
-        }
+        public String JobEducation { get; set; }
     }
 }

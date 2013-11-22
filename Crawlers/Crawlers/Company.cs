@@ -8,48 +8,16 @@ namespace Crawlers
 {
     class Company
     {
-        /// <summary>
-        /// Properties for the Company class. All private variables with public getters and setters
-        /// </summary>
-        
-        private int companyID;
-        
-        public int CompanyID
-        {
-            get { return companyID; }
-            set { companyID = value; }
-        }
+        public int CompanyID { get; set; }
 
-        private String companyName;
+        public string CompanyName { get; set; }
 
-        public String CompanyName
-        {
-            get { return companyName; }
-            set { companyName = value; }
-        }
+        public string CompanyDescription { get; set; }
 
-        private String companyDescription;
+        public DateTime CompanyDate { get; set; }
 
-        public String CompanyDescription
-        {
-            get { return companyDescription; }
-            set { companyDescription = value; }
-        }
+        public string CompanyEmail { get; set; }
 
-        private DateTime companyDate;
-
-        public DateTime CompanyDate
-        {
-            get { return companyDate; }
-            set { companyDate = value; }
-        }
-
-        private String companyEmail;
-
-        public String CompanyEmail
-        {
-            get { return companyEmail; }
-            set { companyEmail = value; }
-        }
+        public string CompanyCity { get; set; }
     }
 }
