@@ -1,9 +1,0 @@
-C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\bin\Debug\DataAccessObjects.dll
-C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\bin\Debug\DataAccessObjects.pdb
-C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\obj\Debug\DataAccessObjects.dll
-C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\obj\Debug\DataAccessObjects.pdb
-G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\bin\Debug\DataAccessObjects.dll
-G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\bin\Debug\DataAccessObjects.pdb
-G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\obj\Debug\DataAccessObjects.csprojResolveAssemblyReference.cache
-G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\obj\Debug\DataAccessObjects.dll
-G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\DataAccessObjects\obj\Debug\DataAccessObjects.pdb
