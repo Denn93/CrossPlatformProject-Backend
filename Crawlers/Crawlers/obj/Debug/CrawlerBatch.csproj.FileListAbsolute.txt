@@ -1,0 +1,16 @@
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.csprojResolveAssemblyReference.cache
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.exe.config
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.exe
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.pdb
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\DataAccessObjects.dll
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.exe
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.pdb
+C:\Users\Dennis\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\DataAccessObjects.pdb
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.exe.config
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.exe
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.pdb
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\DataAccessObjects.dll
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\DataAccessObjects.pdb
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.exe
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.pdb
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.csprojResolveAssemblyReference.cache

@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using CrawlerBatch.Crawlers;
 
-namespace Crawlers
+namespace CrawlerBatch
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Crawler crawler = new Crawler();
-            crawler.BuildCrawlers();
+            #region Main Actions
+
+            var crawlerBatches = new CrawlerBatches();
+
+            crawlerBatches.BuildCrawlers();
+            crawlerBatches.StartCrawlers();
+            crawlerBatches.SubmitData();
+
+            #endregion
         }
     }
 }

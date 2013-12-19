@@ -1,20 +1,20 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Company.cs" caret="254" fromTop="12" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Job.cs" caret="0" fromTop="0" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="261" fromTop="12" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:VacatureBankNl.cs" caret="4264" fromTop="34" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Crawler.cs" caret="444" fromTop="18" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:AVacCrawler.cs" caret="790" fromTop="26" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:JobbirdCom.cs" caret="2424" fromTop="25" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:DAO/f:Company.cs" caret="91" fromTop="3" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="1939" fromTop="18" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="2838" fromTop="19" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="281" fromTop="10" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="827" fromTop="7" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:DAO/f:Job.cs" caret="1102" fromTop="49" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="2202" fromTop="16" />
   </RecentFiles>
   <RecentEdits>
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Company.cs" caret="254" fromTop="12" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Job.cs" caret="548" fromTop="21" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:AVacCrawler.cs" caret="1004" fromTop="17" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="261" fromTop="12" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Crawler.cs" caret="444" fromTop="18" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:VacatureBankNl.cs" caret="866" fromTop="14" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:JobbirdCom.cs" caret="4069" fromTop="14" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:DAO/f:Company.cs" caret="91" fromTop="3" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:DAO/f:Job.cs" caret="1102" fromTop="49" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="2677" fromTop="29" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="1906" fromTop="27" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="809" fromTop="21" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="281" fromTop="10" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="1340" fromTop="28" />
   </RecentEdits>
 </RecentFiles>

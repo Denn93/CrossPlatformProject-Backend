@@ -1,0 +1,6 @@
+2013/12/03-11:00:02.225 22ec Recovering log #13
+2013/12/03-11:00:02.228 22ec Level-0 table #15: started
+2013/12/03-11:00:02.309 22ec Level-0 table #15: 53038 bytes OK
+2013/12/03-11:00:02.727 22ec Delete type=0 #11
+2013/12/03-11:00:02.728 22ec Delete type=0 #13
+2013/12/03-11:00:02.728 22ec Delete type=3 #12
