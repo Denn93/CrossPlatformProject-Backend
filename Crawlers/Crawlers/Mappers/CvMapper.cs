@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using DataAccessObjects;
 
 namespace CrawlerBatch.Mappers
@@ -7,12 +9,18 @@ namespace CrawlerBatch.Mappers
     {
         public override int Insert(Cv obj)
         {
-            int insertId = MatchyBackend.AddCV(MapToService(obj));
-
-            if (insertId == 0)
-                Console.WriteLine("Cv niet kunnen toevoegen");
-            else
-                Console.WriteLine(insertId);
+            int insertId = 0;
+            try
+            {
+                insertId = MatchyBackend.AddCv(MapToService(obj));
+               
+                if (insertId != 0)
+                    Console.WriteLine(insertId);
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("er is een fout met deze Cv. Kan niet toegevoegd worden. ");
+            }
 
             return insertId;
 
@@ -29,21 +37,24 @@ namespace CrawlerBatch.Mappers
             var sourceMapper = new SourceMapper();
 
             return new MatchyBackEnd.Cv()
-                       {
+            {
                            CvID = cv.CvID,
                            Age = cv.Age,
                            City = cv.City,
                            Date = cv.Date,
                            Discipline = cv.Discipline,
-                           Education = cv.Education,
+                           EducationHistory = cv.EducationHistory,
                            EducationLevel = eduMapper.MapToService(cv.EducationLevel),
                            Hours = cv.Hours,
                            Profession = cv.Profession,
                            Province = cv.Province,
                            Sex = cv.Sex,
-                           Title = cv.Title,
                            WorkExperience = cv.WorkExperience,
-                           Source = sourceMapper.MapToService(cv.Source)
+                           Source = sourceMapper.MapToService(cv.Source),
+                           Personal = cv.Personal,
+                           Interests = cv.Interests,
+                           JobRequirements = cv.JobRequirements,
+                           CrawlerId = cv.CrawlerId
                        };
         }
 
@@ -59,15 +70,18 @@ namespace CrawlerBatch.Mappers
                 City = cv.City,
                 Date = cv.Date,
                 Discipline = cv.Discipline,
-                Education = cv.Education,
+                EducationHistory = cv.EducationHistory,
                 EducationLevel = eduMapper.MapFromService(cv.EducationLevel),
                 Hours = cv.Hours,
                 Profession = cv.Profession,
                 Province = cv.Province,
                 Sex = cv.Sex,
-                Title = cv.Title,
                 WorkExperience = cv.WorkExperience,
-                Source = sourceMapper.MapFromService(cv.Source)
+                Source = sourceMapper.MapFromService(cv.Source),
+                Personal = cv.Personal,
+                Interests = cv.Interests,
+                JobRequirements = cv.JobRequirements,
+                CrawlerId = cv.CrawlerId
             };
         }
     }

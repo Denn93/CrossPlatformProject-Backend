@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using CrawlerBatch.Mappers;
@@ -43,9 +44,22 @@ namespace CrawlerBatch.Crawlers
         /// <returns></returns>
         protected virtual String urlHandler(String url = null)
         {
-            var webClient = new WebClient();
+            String result = "";
+            try
+            {
+                WebRequest request = WebRequest.Create(url ?? Url);
+                request.Timeout = 5000;
+                WebResponse response = request.GetResponse();
+                Stream responseStream = response.GetResponseStream();
 
-            var result = webClient.DownloadString(url ?? Url);
+                StreamReader reader = new StreamReader(responseStream);
+                result = reader.ReadToEnd();
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("Connection Time out: " + ex.Message);
+                result = urlHandler(url);
+            }
 
             return WebUtility.HtmlDecode(result);
         }
@@ -59,11 +73,11 @@ namespace CrawlerBatch.Crawlers
             String resultString;
 
             if (!isInt)
-                resultString = (resultRegex.Count == 0) ? "Niet Beschikbaar" : resultRegex[0].Groups[groupId].Value;
+                resultString = (resultRegex.Count == 0 || resultRegex[0].Groups[groupId].Value.Trim().Equals("Â") || resultRegex[0].Groups[groupId].Value.Trim().Equals("-") || resultRegex[0].Groups[groupId].Value.Trim().Equals("")) ? "Niet Beschikbaar" : resultRegex[0].Groups[groupId].Value;
             else
-                resultString = (resultRegex.Count == 0) ? "0" : resultRegex[0].Groups[groupId].Value;
+                resultString = (resultRegex.Count == 0 || resultRegex[0].Groups[groupId].Value.Trim().Equals("Â") || resultRegex[0].Groups[groupId].Value.Trim().Equals("-") || resultRegex[0].Groups[groupId].Value.Trim().Equals("")) ? "0" : resultRegex[0].Groups[groupId].Value;
 
-            Console.WriteLine(resultString);
+            //Console.WriteLine(resultString);
 
             return resultString;
         }
@@ -118,7 +132,7 @@ namespace CrawlerBatch.Crawlers
             return result;
         }
 
-        protected virtual DetailJob GetDetailledInfo(String input)
+        protected virtual DetailJob GetDetailledInfo(String input, Company company)
         {
             throw new NotSupportedException(); 
         }

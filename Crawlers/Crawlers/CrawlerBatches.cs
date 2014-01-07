@@ -15,7 +15,7 @@ namespace CrawlerBatch.Crawlers
 
         public void BuildCrawlers()
         {
-            _vacCrawlers = new List<ACrawler> {new VacatureBankNl()};
+            _vacCrawlers = new List<ACrawler> {new VacatureBankNl(), new JobbirdCom()};
             _aCvCrawlers = new List<ACrawler> {new CvEnVacatureBankNl()};
 
             _aCrawlerJobs = new List<List<Job>>();
@@ -27,13 +27,13 @@ namespace CrawlerBatch.Crawlers
         /// </summary>
         public void StartCrawlers()
         {
-//            foreach (var cvCrawler in _aCvCrawlers)
-//            {
-//                Console.WriteLine(String.Format("Gestarte crawler: {0}", cvCrawler.Name));
-//
-//                cvCrawler.Process();
-//                _aCrawlerCVs.Add(cvCrawler.Cvs);
-//            }
+            foreach (var cvCrawler in _aCvCrawlers)
+            {
+                Console.WriteLine(String.Format("Gestarte crawler: {0}", cvCrawler.Name));
+
+                cvCrawler.Process();
+                _aCrawlerCVs.Add(cvCrawler.Cvs);
+            }
 
             foreach (var vacCrawler in _vacCrawlers)
             {
@@ -68,6 +68,8 @@ namespace CrawlerBatch.Crawlers
 
                     mapper.Insert(cv);
                 }
+
+
             }
 
             Console.ReadKey();

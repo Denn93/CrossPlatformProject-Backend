@@ -1,4 +1,5 @@
 <Modules>
   <Module PersistentId="E4B6CCED-60C7-4773-A660-B533C8D8EE39" ModuleId="CrawlerBatch" />
-  <Module PersistentId="F112EA58-0032-4F0C-BA3A-046CAF9ECD21" ModuleId="MappingLibrary" />
+  <Module PersistentId="DD18D715-712C-4786-B14F-3BF7AA307F5B" ModuleId="DataAccessObjects" />
+  <Module PersistentId="95A0289B-208B-44AE-A87B-641A6AEE0E6A" ModuleId="MatchyBackEnd" />
 </Modules>

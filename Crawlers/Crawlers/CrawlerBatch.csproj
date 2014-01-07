@@ -47,10 +47,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataAccessObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\Project 5_6 GTA\Server Bestanden\DataAccessObjects\bin\Debug\DataAccessObjects.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
@@ -64,11 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeType.cs" />
     <Compile Include="Crawlers\CvEnVacatureBankNl.cs" />
     <Compile Include="Crawlers\ACrawler.cs" />
     <Compile Include="CrawlerBatches.cs" />
     <Compile Include="Crawlers\JobbirdCom.cs" />
+    <Compile Include="CrawlerWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Mappers\AMapper.cs" />
     <Compile Include="Mappers\CompanyMapper.cs" />
     <Compile Include="Mappers\CvMapper.cs" />
@@ -150,10 +148,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://145.24.222.183/Matchy/MatchyService.asmx%3fwsdl">
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Project 5_6 GTA\Server Bestanden\DataAccessObjects\DataAccessObjects.csproj">
+      <Project>{dd18d715-712c-4786-b14f-3bf7aa307f5b}</Project>
+      <Name>DataAccessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:50100/MatchyBackEnd/MatchyService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MatchyBackEnd\</RelPath>
-      <UpdateFromURL>http://145.24.222.183/Matchy/MatchyService.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://localhost:50100/MatchyBackEnd/MatchyService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -161,6 +165,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>CrawlerBatch_MatchyBackEnd_MatchyService</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\MatchyBackEnd\MatchyService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

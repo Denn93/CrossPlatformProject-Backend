@@ -31,7 +31,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
-        private System.Threading.SendOrPostCallback addUserOperationCompleted;
+        private System.Threading.SendOrPostCallback AddUserOperationCompleted;
         
         private System.Threading.SendOrPostCallback UpdateUserOperationCompleted;
         
@@ -47,13 +47,13 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private System.Threading.SendOrPostCallback DeleteJobOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AddCVOperationCompleted;
+        private System.Threading.SendOrPostCallback AddCvOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetCVOperationCompleted;
+        private System.Threading.SendOrPostCallback GetCvOperationCompleted;
         
-        private System.Threading.SendOrPostCallback UpdateCVOperationCompleted;
+        private System.Threading.SendOrPostCallback UpdateCvOperationCompleted;
         
-        private System.Threading.SendOrPostCallback DeleteCVOperationCompleted;
+        private System.Threading.SendOrPostCallback DeleteCvOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddMatchOperationCompleted;
         
@@ -88,6 +88,10 @@ namespace CrawlerBatch.MatchyBackEnd {
         private System.Threading.SendOrPostCallback AddDetailJobOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDetailJobOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SearchByEmployeeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback searchByCompanyOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -131,7 +135,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         public event LoginCompletedEventHandler LoginCompleted;
         
         /// <remarks/>
-        public event addUserCompletedEventHandler addUserCompleted;
+        public event AddUserCompletedEventHandler AddUserCompleted;
         
         /// <remarks/>
         public event UpdateUserCompletedEventHandler UpdateUserCompleted;
@@ -155,16 +159,16 @@ namespace CrawlerBatch.MatchyBackEnd {
         public event DeleteJobCompletedEventHandler DeleteJobCompleted;
         
         /// <remarks/>
-        public event AddCVCompletedEventHandler AddCVCompleted;
+        public event AddCvCompletedEventHandler AddCvCompleted;
         
         /// <remarks/>
-        public event GetCVCompletedEventHandler GetCVCompleted;
+        public event GetCvCompletedEventHandler GetCvCompleted;
         
         /// <remarks/>
-        public event UpdateCVCompletedEventHandler UpdateCVCompleted;
+        public event UpdateCvCompletedEventHandler UpdateCvCompleted;
         
         /// <remarks/>
-        public event DeleteCVCompletedEventHandler DeleteCVCompleted;
+        public event DeleteCvCompletedEventHandler DeleteCvCompleted;
         
         /// <remarks/>
         public event AddMatchCompletedEventHandler AddMatchCompleted;
@@ -218,6 +222,12 @@ namespace CrawlerBatch.MatchyBackEnd {
         public event GetDetailJobCompletedEventHandler GetDetailJobCompleted;
         
         /// <remarks/>
+        public event SearchByEmployeeCompletedEventHandler SearchByEmployeeCompleted;
+        
+        /// <remarks/>
+        public event searchByCompanyCompletedEventHandler searchByCompanyCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/Login", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int Login(string email, string pass) {
             object[] results = this.Invoke("Login", new object[] {
@@ -249,31 +259,31 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/addUser", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int addUser(User user) {
-            object[] results = this.Invoke("addUser", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/AddUser", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int AddUser(User user) {
+            object[] results = this.Invoke("AddUser", new object[] {
                         user});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void addUserAsync(User user) {
-            this.addUserAsync(user, null);
+        public void AddUserAsync(User user) {
+            this.AddUserAsync(user, null);
         }
         
         /// <remarks/>
-        public void addUserAsync(User user, object userState) {
-            if ((this.addUserOperationCompleted == null)) {
-                this.addUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddUserOperationCompleted);
+        public void AddUserAsync(User user, object userState) {
+            if ((this.AddUserOperationCompleted == null)) {
+                this.AddUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUserOperationCompleted);
             }
-            this.InvokeAsync("addUser", new object[] {
-                        user}, this.addUserOperationCompleted, userState);
+            this.InvokeAsync("AddUser", new object[] {
+                        user}, this.AddUserOperationCompleted, userState);
         }
         
-        private void OnaddUserOperationCompleted(object arg) {
-            if ((this.addUserCompleted != null)) {
+        private void OnAddUserOperationCompleted(object arg) {
+            if ((this.AddUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.addUserCompleted(this, new addUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.AddUserCompleted(this, new AddUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -481,118 +491,118 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/AddCV", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int AddCV(Cv cv) {
-            object[] results = this.Invoke("AddCV", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/AddCv", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int AddCv(Cv cv) {
+            object[] results = this.Invoke("AddCv", new object[] {
                         cv});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void AddCVAsync(Cv cv) {
-            this.AddCVAsync(cv, null);
+        public void AddCvAsync(Cv cv) {
+            this.AddCvAsync(cv, null);
         }
         
         /// <remarks/>
-        public void AddCVAsync(Cv cv, object userState) {
-            if ((this.AddCVOperationCompleted == null)) {
-                this.AddCVOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddCVOperationCompleted);
+        public void AddCvAsync(Cv cv, object userState) {
+            if ((this.AddCvOperationCompleted == null)) {
+                this.AddCvOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddCvOperationCompleted);
             }
-            this.InvokeAsync("AddCV", new object[] {
-                        cv}, this.AddCVOperationCompleted, userState);
+            this.InvokeAsync("AddCv", new object[] {
+                        cv}, this.AddCvOperationCompleted, userState);
         }
         
-        private void OnAddCVOperationCompleted(object arg) {
-            if ((this.AddCVCompleted != null)) {
+        private void OnAddCvOperationCompleted(object arg) {
+            if ((this.AddCvCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddCVCompleted(this, new AddCVCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.AddCvCompleted(this, new AddCvCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/GetCV", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Cv[] GetCV(Cv cv) {
-            object[] results = this.Invoke("GetCV", new object[] {
-                        cv});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/GetCv", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Cv[] GetCv(int id) {
+            object[] results = this.Invoke("GetCv", new object[] {
+                        id});
             return ((Cv[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetCVAsync(Cv cv) {
-            this.GetCVAsync(cv, null);
+        public void GetCvAsync(int id) {
+            this.GetCvAsync(id, null);
         }
         
         /// <remarks/>
-        public void GetCVAsync(Cv cv, object userState) {
-            if ((this.GetCVOperationCompleted == null)) {
-                this.GetCVOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCVOperationCompleted);
+        public void GetCvAsync(int id, object userState) {
+            if ((this.GetCvOperationCompleted == null)) {
+                this.GetCvOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCvOperationCompleted);
             }
-            this.InvokeAsync("GetCV", new object[] {
-                        cv}, this.GetCVOperationCompleted, userState);
+            this.InvokeAsync("GetCv", new object[] {
+                        id}, this.GetCvOperationCompleted, userState);
         }
         
-        private void OnGetCVOperationCompleted(object arg) {
-            if ((this.GetCVCompleted != null)) {
+        private void OnGetCvOperationCompleted(object arg) {
+            if ((this.GetCvCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCVCompleted(this, new GetCVCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetCvCompleted(this, new GetCvCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/UpdateCV", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int UpdateCV(Cv cv) {
-            object[] results = this.Invoke("UpdateCV", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/UpdateCv", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdateCv(Cv cv) {
+            object[] results = this.Invoke("UpdateCv", new object[] {
                         cv});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void UpdateCVAsync(Cv cv) {
-            this.UpdateCVAsync(cv, null);
+        public void UpdateCvAsync(Cv cv) {
+            this.UpdateCvAsync(cv, null);
         }
         
         /// <remarks/>
-        public void UpdateCVAsync(Cv cv, object userState) {
-            if ((this.UpdateCVOperationCompleted == null)) {
-                this.UpdateCVOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateCVOperationCompleted);
+        public void UpdateCvAsync(Cv cv, object userState) {
+            if ((this.UpdateCvOperationCompleted == null)) {
+                this.UpdateCvOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateCvOperationCompleted);
             }
-            this.InvokeAsync("UpdateCV", new object[] {
-                        cv}, this.UpdateCVOperationCompleted, userState);
+            this.InvokeAsync("UpdateCv", new object[] {
+                        cv}, this.UpdateCvOperationCompleted, userState);
         }
         
-        private void OnUpdateCVOperationCompleted(object arg) {
-            if ((this.UpdateCVCompleted != null)) {
+        private void OnUpdateCvOperationCompleted(object arg) {
+            if ((this.UpdateCvCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateCVCompleted(this, new UpdateCVCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.UpdateCvCompleted(this, new UpdateCvCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/DeleteCV", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int DeleteCV(Cv cv) {
-            object[] results = this.Invoke("DeleteCV", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/DeleteCv", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int DeleteCv(Cv cv) {
+            object[] results = this.Invoke("DeleteCv", new object[] {
                         cv});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void DeleteCVAsync(Cv cv) {
-            this.DeleteCVAsync(cv, null);
+        public void DeleteCvAsync(Cv cv) {
+            this.DeleteCvAsync(cv, null);
         }
         
         /// <remarks/>
-        public void DeleteCVAsync(Cv cv, object userState) {
-            if ((this.DeleteCVOperationCompleted == null)) {
-                this.DeleteCVOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteCVOperationCompleted);
+        public void DeleteCvAsync(Cv cv, object userState) {
+            if ((this.DeleteCvOperationCompleted == null)) {
+                this.DeleteCvOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteCvOperationCompleted);
             }
-            this.InvokeAsync("DeleteCV", new object[] {
-                        cv}, this.DeleteCVOperationCompleted, userState);
+            this.InvokeAsync("DeleteCv", new object[] {
+                        cv}, this.DeleteCvOperationCompleted, userState);
         }
         
-        private void OnDeleteCVOperationCompleted(object arg) {
-            if ((this.DeleteCVCompleted != null)) {
+        private void OnDeleteCvOperationCompleted(object arg) {
+            if ((this.DeleteCvCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteCVCompleted(this, new DeleteCVCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.DeleteCvCompleted(this, new DeleteCvCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1090,6 +1100,64 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/SearchByEmployee", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Job[] SearchByEmployee(SearchCompany searchCompany) {
+            object[] results = this.Invoke("SearchByEmployee", new object[] {
+                        searchCompany});
+            return ((Job[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SearchByEmployeeAsync(SearchCompany searchCompany) {
+            this.SearchByEmployeeAsync(searchCompany, null);
+        }
+        
+        /// <remarks/>
+        public void SearchByEmployeeAsync(SearchCompany searchCompany, object userState) {
+            if ((this.SearchByEmployeeOperationCompleted == null)) {
+                this.SearchByEmployeeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchByEmployeeOperationCompleted);
+            }
+            this.InvokeAsync("SearchByEmployee", new object[] {
+                        searchCompany}, this.SearchByEmployeeOperationCompleted, userState);
+        }
+        
+        private void OnSearchByEmployeeOperationCompleted(object arg) {
+            if ((this.SearchByEmployeeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SearchByEmployeeCompleted(this, new SearchByEmployeeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://145.24.222.183/searchByCompany", RequestNamespace="http://145.24.222.183/", ResponseNamespace="http://145.24.222.183/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Cv[] searchByCompany(SearchCv searchCv) {
+            object[] results = this.Invoke("searchByCompany", new object[] {
+                        searchCv});
+            return ((Cv[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void searchByCompanyAsync(SearchCv searchCv) {
+            this.searchByCompanyAsync(searchCv, null);
+        }
+        
+        /// <remarks/>
+        public void searchByCompanyAsync(SearchCv searchCv, object userState) {
+            if ((this.searchByCompanyOperationCompleted == null)) {
+                this.searchByCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsearchByCompanyOperationCompleted);
+            }
+            this.InvokeAsync("searchByCompany", new object[] {
+                        searchCv}, this.searchByCompanyOperationCompleted, userState);
+        }
+        
+        private void OnsearchByCompanyOperationCompleted(object arg) {
+            if ((this.searchByCompanyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.searchByCompanyCompleted(this, new searchByCompanyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1118,7 +1186,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private string emailField;
         
-        private string sexField;
+        private string birthDayField;
         
         private int profileIdField;
         
@@ -1143,12 +1211,12 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        public string Sex {
+        public string BirthDay {
             get {
-                return this.sexField;
+                return this.birthDayField;
             }
             set {
-                this.sexField = value;
+                this.birthDayField = value;
             }
         }
         
@@ -1223,13 +1291,11 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private int cvIDField;
         
-        private int crawlerIDField;
-        
-        private string titleField;
-        
         private string nameField;
         
-        private System.DateTime dateField;
+        private int crawlerIdField;
+        
+        private string dateField;
         
         private string professionField;
         
@@ -1241,17 +1307,25 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private string hoursField;
         
+        private string emailField;
+        
         private string cityField;
         
         private string sexField;
         
         private int ageField;
         
-        private string educationField;
+        private string educationHistoryField;
         
         private string workExperienceField;
         
         private Source sourceField;
+        
+        private string personalField;
+        
+        private string interestsField;
+        
+        private string jobRequirementsField;
         
         /// <remarks/>
         public int CvID {
@@ -1260,26 +1334,6 @@ namespace CrawlerBatch.MatchyBackEnd {
             }
             set {
                 this.cvIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CrawlerID {
-            get {
-                return this.crawlerIDField;
-            }
-            set {
-                this.crawlerIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Title {
-            get {
-                return this.titleField;
-            }
-            set {
-                this.titleField = value;
             }
         }
         
@@ -1294,7 +1348,17 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        public System.DateTime Date {
+        public int CrawlerId {
+            get {
+                return this.crawlerIdField;
+            }
+            set {
+                this.crawlerIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Date {
             get {
                 return this.dateField;
             }
@@ -1354,6 +1418,16 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
         public string City {
             get {
                 return this.cityField;
@@ -1384,12 +1458,12 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        public string Education {
+        public string EducationHistory {
             get {
-                return this.educationField;
+                return this.educationHistoryField;
             }
             set {
-                this.educationField = value;
+                this.educationHistoryField = value;
             }
         }
         
@@ -1410,6 +1484,36 @@ namespace CrawlerBatch.MatchyBackEnd {
             }
             set {
                 this.sourceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Personal {
+            get {
+                return this.personalField;
+            }
+            set {
+                this.personalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Interests {
+            get {
+                return this.interestsField;
+            }
+            set {
+                this.interestsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string JobRequirements {
+            get {
+                return this.jobRequirementsField;
+            }
+            set {
+                this.jobRequirementsField = value;
             }
         }
     }
@@ -1443,6 +1547,168 @@ namespace CrawlerBatch.MatchyBackEnd {
             }
             set {
                 this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18058")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://145.24.222.183/")]
+    public partial class SearchCv {
+        
+        private string descriptionField;
+        
+        private string educationField;
+        
+        private string brancheField;
+        
+        private string cityField;
+        
+        private string nameField;
+        
+        private string typeField;
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Education {
+            get {
+                return this.educationField;
+            }
+            set {
+                this.educationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Branche {
+            get {
+                return this.brancheField;
+            }
+            set {
+                this.brancheField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string City {
+            get {
+                return this.cityField;
+            }
+            set {
+                this.cityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18058")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://145.24.222.183/")]
+    public partial class SearchCompany {
+        
+        private string descriptionField;
+        
+        private string educationField;
+        
+        private string brancheField;
+        
+        private string cityField;
+        
+        private string nameField;
+        
+        private string typeField;
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Education {
+            get {
+                return this.educationField;
+            }
+            set {
+                this.educationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Branche {
+            get {
+                return this.brancheField;
+            }
+            set {
+                this.brancheField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string City {
+            get {
+                return this.cityField;
+            }
+            set {
+                this.cityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
             }
         }
     }
@@ -1512,7 +1778,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private string jobDescriptionField;
         
-        private System.DateTime jobPlaceDateField;
+        private string jobPlaceDateField;
         
         private string jobHoursField;
         
@@ -1581,7 +1847,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        public System.DateTime JobPlaceDate {
+        public string JobPlaceDate {
             get {
                 return this.jobPlaceDateField;
             }
@@ -1635,9 +1901,11 @@ namespace CrawlerBatch.MatchyBackEnd {
         
         private string companyDescriptionField;
         
-        private System.DateTime companyDateField;
+        private string companyDateField;
         
         private string companyEmailField;
+        
+        private string companyTelField;
         
         private string companyCityField;
         
@@ -1672,7 +1940,7 @@ namespace CrawlerBatch.MatchyBackEnd {
         }
         
         /// <remarks/>
-        public System.DateTime CompanyDate {
+        public string CompanyDate {
             get {
                 return this.companyDateField;
             }
@@ -1688,6 +1956,16 @@ namespace CrawlerBatch.MatchyBackEnd {
             }
             set {
                 this.companyEmailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompanyTel {
+            get {
+                return this.companyTelField;
+            }
+            set {
+                this.companyTelField = value;
             }
         }
         
@@ -1808,17 +2086,17 @@ namespace CrawlerBatch.MatchyBackEnd {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void addUserCompletedEventHandler(object sender, addUserCompletedEventArgs e);
+    public delegate void AddUserCompletedEventHandler(object sender, AddUserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class addUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AddUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal addUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal AddUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2016,17 +2294,17 @@ namespace CrawlerBatch.MatchyBackEnd {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void AddCVCompletedEventHandler(object sender, AddCVCompletedEventArgs e);
+    public delegate void AddCvCompletedEventHandler(object sender, AddCvCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AddCVCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class AddCvCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal AddCVCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal AddCvCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2042,17 +2320,17 @@ namespace CrawlerBatch.MatchyBackEnd {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetCVCompletedEventHandler(object sender, GetCVCompletedEventArgs e);
+    public delegate void GetCvCompletedEventHandler(object sender, GetCvCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCVCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetCvCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetCVCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetCvCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2068,17 +2346,17 @@ namespace CrawlerBatch.MatchyBackEnd {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void UpdateCVCompletedEventHandler(object sender, UpdateCVCompletedEventArgs e);
+    public delegate void UpdateCvCompletedEventHandler(object sender, UpdateCvCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateCVCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class UpdateCvCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal UpdateCVCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal UpdateCvCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2094,17 +2372,17 @@ namespace CrawlerBatch.MatchyBackEnd {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void DeleteCVCompletedEventHandler(object sender, DeleteCVCompletedEventArgs e);
+    public delegate void DeleteCvCompletedEventHandler(object sender, DeleteCvCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class DeleteCVCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class DeleteCvCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal DeleteCVCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal DeleteCvCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2556,6 +2834,58 @@ namespace CrawlerBatch.MatchyBackEnd {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((DetailJob[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SearchByEmployeeCompletedEventHandler(object sender, SearchByEmployeeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SearchByEmployeeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SearchByEmployeeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Job[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Job[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void searchByCompanyCompletedEventHandler(object sender, searchByCompanyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class searchByCompanyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal searchByCompanyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Cv[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Cv[])(this.results[0]));
             }
         }
     }

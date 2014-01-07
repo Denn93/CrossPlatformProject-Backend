@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using DataAccessObjects;
 
 namespace CrawlerBatch.Mappers
@@ -7,11 +8,20 @@ namespace CrawlerBatch.Mappers
     {
         public override int Insert(Job obj)
         {
-            int insertId = MatchyBackend.AddJob(MapToService(obj));
+            int insertId = 0;
 
-            if (insertId == 0)
-                Console.WriteLine("Job not inserted. Error, Error");
+            try
+            {
+                insertId = MatchyBackend.AddJob(MapToService(obj));
 
+                if (insertId != 0)
+                    Console.WriteLine(insertId.ToString());
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("Er is iets mis met de vacature");
+            }
+            
             return insertId;
         }
 

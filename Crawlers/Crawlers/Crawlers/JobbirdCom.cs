@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using CrawlerBatch.Mappers;
 using DataAccessObjects;
 using Match = System.Text.RegularExpressions.Match;
@@ -17,13 +18,13 @@ namespace CrawlerBatch.Crawlers
         private const String GetLastPagePattern = @"<li class=""pager-last last"">.*?<a href="".*?page=(\d+).*?"" class=""active"">";
         private const String GetResultsPattern = @"<a class=""linkVacature .*?"" .*?>(.*?)</a>";
 
-        private const String ResultCompanyPattern = @"<table class=\""tabelVacature\"" onClick=\""redirect\('/nl/vacature/(\d+)/.*?bij-(.*?)-in|\\""\)\"">";
+        private const String ResultCompanyPattern = @"<table.*? onClick=\""redirect\('/nl/vacature/(\d+)/.*?\)"">";
         private const String ResultSearchCriteria = @"<div class=""zoekCriteria"">(.*?)</div>";
         private const String ResultTitlePattern = @"<span class=""titel"">(.*?)</span>";
         private const String ResultDescriptionPattern = @"<div class=""omschrijving"">(.*?)</div>";
 
        // private enum EductionLevels { HBO, MBO, Universitair, HAVO, [Description("VMBO / MAVO")]VMBO, VWO, LBO};
-
+  
         public JobbirdCom()
         {
             CurrentPage = 0;
@@ -46,17 +47,26 @@ namespace CrawlerBatch.Crawlers
                 CurrentPage = currentPage;
                 Console.WriteLine(CurrentPage);
 
+                if (currentPage == 6)
+                    break;
+
                 if (currentPage != 0)
                     OpenNewPage();
 
+                
+
                 var pageResults = Regex.Matches(CrawlerData, GetResultsPattern, RegexOptions.Singleline);
 
+                var i = 0;
                 foreach (string resultContent in from Match result in pageResults select result.Groups[1].Value)
                 {
                     Jobs.Add(GetResultToResultSet(resultContent));
-                    DetailJobs.Add(GetDetailledInfo(resultContent));
+                    i++;
+                    Console.WriteLine(i.ToString());
                 }
-            }   
+            }
+
+            Console.WriteLine(String.Format("Crawling {0} Complete", CrawlerName));
         }
 
         /// <summary>
@@ -91,23 +101,29 @@ namespace CrawlerBatch.Crawlers
             var company = new Company();
 
             job.CrawlerID = Convert.ToInt32(GetCrawlerData(ResultCompanyPattern, result, true));
-            company.CompanyName = GetCrawlerData(ResultCompanyPattern, result, false, 2);
             job.JobTitle = GetCrawlerData(ResultTitlePattern, result);
             job.JobDescription = GetCrawlerData(ResultDescriptionPattern, result);
-            job.JobPlaceDate = DateTime.Now;
+            job.JobPlaceDate = DateTime.Now.ToString();
             job.Source = DetermineSource();
 
             GetSearchCriteriaFromResult(GetCrawlerData(ResultSearchCriteria, result), job, company);
-            company.CompanyDate = DateTime.Now;
+            company.CompanyDate = DateTime.Now.ToString();
+
+            job.DetailJob = GetDetailledInfo(result, company);
 
             job.Company = company;
             return job;
         }
 
-        protected override DetailJob GetDetailledInfo(string input)
+        protected override DetailJob GetDetailledInfo(string input, Company company)
         {
             const String resultLinkPattern = @"<table class=""tabelVacature"" onClick=""redirect\('(.*?)'\)"">";
             const String resultDataPattern = @"<div class=""vacatureSubtitels"">(.*?)</div><div class=""VacatureDetail-buttons"">";
+            const String resultCompanyLinkPattern = @"</div><a href=""(.*?)""><abbr title=""Bedrijfspresentatie"">";
+            const String resultCompanyTelPattern = @"<span class=""field-content bedrijfspres-tel"">(.*?)</span>";
+            const String resultCompanyEmailPattern = @"<span class=""field-content bedrijfspres-email"">.*?<a.*?>(.*?)</a>";
+            const String resultCompanyAboutPattern = @"<div class=""views-field views-field-php-2"">.*?->\s+</span>(.*?)<a.*?>Volledige omschrijving</a>";
+            const String resultCompanyNamePattern = @"<td valign=""middle""><h1>(.*?)</h1></td>";
 
             DetailJob detailJob = new DetailJob();
 
@@ -115,6 +131,23 @@ namespace CrawlerBatch.Crawlers
 
             detailJob.Data = GetCrawlerData(resultDataPattern, tempData);
 
+            if (!GetCrawlerData(resultCompanyLinkPattern, tempData).Equals("Niet Beschikbaar"))
+            {
+                tempData = urlHandler(BaseURL + GetCrawlerData(resultCompanyLinkPattern, tempData));
+
+                company.CompanyDescription = GetCrawlerData(resultCompanyAboutPattern, tempData);
+                company.CompanyEmail = GetCrawlerData(resultCompanyEmailPattern, tempData);
+                company.CompanyTel = GetCrawlerData(resultCompanyTelPattern, tempData);
+                company.CompanyName = GetCrawlerData(resultCompanyNamePattern, tempData);
+            }
+            else
+            {
+                company.CompanyDescription = "Niet Beschikbaar";
+                company.CompanyEmail = "Niet Beschikbaar";
+                company.CompanyTel = "Niet Beschikbaar";
+                company.CompanyName = "Niet Beschikbaar";
+            }
+            
             return detailJob;
         }
 
@@ -156,6 +189,7 @@ namespace CrawlerBatch.Crawlers
             }
 
             job.JobHours = job.JobHours ?? "Niet beschikbaar";
+            job.Education = job.Education ?? new Education();
         }
 
         protected override Education DetermineEducation(string input)

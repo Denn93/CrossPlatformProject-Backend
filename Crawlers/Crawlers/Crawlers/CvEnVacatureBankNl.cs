@@ -14,17 +14,12 @@ namespace CrawlerBatch.Crawlers
         private const String CrawlerName = "CvenVacatureBank";
 
         private const String GetLastPagePattern = @"<h2>CV</h2>.*?<b>.*?</b>.*?<b>(.*?)</b>.*?";
-        private const String GetResultLinks = @"<a href=""(/cv/\d+/.*?.html)"">.*?</a>.*?";
+        private const String GetResultLinks = @"<a href=""(/cv/(\d+)/.*?.html)"">.*?</a>.*?";
 
-        private Education[] _educations;
-
-        private readonly EducationMapper _educationMapper;
+        private int _crawlerID;
 
         public CvEnVacatureBankNl()
         {
-            _educationMapper = new EducationMapper();
-            _educations = _educationMapper.Get(0);
-
             CurrentPage = 0;
             Url = String.Format(URL, "");
             Name = CrawlerName;
@@ -46,13 +41,24 @@ namespace CrawlerBatch.Crawlers
 
                 var pageResults = Regex.Matches(CrawlerData, GetResultLinks, RegexOptions.Singleline);
 
-                foreach (string resultLink in from Match result in pageResults select result.Groups[1].Value)
+                foreach (Match pageResult in pageResults)
                 {
+                    String resultLink = pageResult.Groups[1].Value;
+                    _crawlerID = Convert.ToInt32(pageResult.Groups[2].Value);
+
                     Cvs.Add(GetResultToResultSet(resultLink));
                     i++;
                     Console.WriteLine(i);
                 }
-            }   
+//                foreach (string resultLink in from Match result in pageResults select result.Groups[1].Value)
+//                {
+//                    Cvs.Add(GetResultToResultSet(resultLink));
+//                    i++;
+//                    Console.WriteLine(i);
+//                }
+            }
+
+            Console.WriteLine(String.Format("Crawling {0} Complete", CrawlerName));
         }
 
         protected override void GetPageNumbers()
@@ -73,7 +79,6 @@ namespace CrawlerBatch.Crawlers
 
         public Cv GetResultToResultSet(string link)
         {
-            const String resultTitlePattern = @"<h2>(.*?)</h2>";
             const String resultProfessionPattern = @"<span>Beroep</span>.*?<div class=jump>(.*?)</div>";
             const String resultDatePattern = @"<span>Geplaatst op</span>.*?<div class=jump>(.*?)</div>";
             const String resultDisciplinePattern = @"<span>Vakgebied</span>.*?<div class=jump>(.*?)</div>";
@@ -85,30 +90,53 @@ namespace CrawlerBatch.Crawlers
             const String resultAgePattern = @"<span>Leeftijd</span>.*?<div class=jump>([1][0-9][0-9]|[0-9][0-9]|[0-9]).*?</div>";
             const String resultExperiencePattern = @"<span>Werkervaring en stages</span>.*?<div class=jump>(.*?)</div>";
             const String resultEducationPattern = @"<span>Opleiding</span>.*?<div class=jump>(.*?)</div>";
-
+            const String resultPersonalPattern = @"<span>Persoonlijk</span>.*?<div class=jump>(.*?)</div>";
+            const String resultInterestPattern = @"<span>Kennis, hobby en interesses</span>.*?<div class=jump>(.*?)</div>";
+            const String resultJobRequirementsPattern = @"<span>Zoekt in baan</span>.*?<div class=jump>(.*?)</div>";
+            
             var cv = new Cv();
 
             Url = String.Format(BaseURL, link);
             CrawlerData = urlHandler();
 
-            cv.Title = GetCrawlerData(resultTitlePattern);
-            cv.Date = Convert.ToDateTime(GetCrawlerData(resultDatePattern));
+            cv.CrawlerId = _crawlerID;
+            cv.Date = StringToDateTime(GetCrawlerData(resultDatePattern)).ToString("yyyy-MM-dd HH:mm:ss");
             cv.Profession = GetCrawlerData(resultProfessionPattern);
             cv.Discipline = GetCrawlerData(resultDisciplinePattern);
             cv.Hours = GetCrawlerData(resultHoursPattern);
             cv.City = GetCrawlerData(resultCityPattern);
             cv.Province = GetCrawlerData(resultProvincePattern);
-            cv.Sex = GetCrawlerData(resultSexPattern);
+            cv.Sex = GetCrawlerData(resultSexPattern); 
             cv.Age = Convert.ToInt16(GetCrawlerData(resultAgePattern ,null ,true));
             cv.WorkExperience = GetCrawlerData(resultExperiencePattern);
-            cv.Education = GetCrawlerData(resultEducationPattern);
+            cv.EducationHistory = GetCrawlerData(resultEducationPattern);
             cv.EducationLevel = DetermineEducation(GetCrawlerData(resultEducationLevelPattern));
             cv.Source = DetermineSource();
 
-            Console.WriteLine();
-            Console.WriteLine();
+            cv.Personal = GetCrawlerData(resultPersonalPattern);
+            cv.Interests = GetCrawlerData(resultInterestPattern);
+            cv.JobRequirements = GetCrawlerData(resultJobRequirementsPattern);
+
+            //Console.WriteLine();
+            //Console.WriteLine();
 
             return cv;
+        }
+
+        /// <summary>
+        /// Handmatige converter van String naar een DataTime object
+        /// </summary>
+        /// <param name="date">Bevat de datum die geconverteerd moet worden</param>
+        /// <returns>Een DateTime object met de datum uit String date</returns>
+        private DateTime StringToDateTime(String date)
+        {
+            var dateInfo = date.Split('-');
+
+            var day = Convert.ToInt32(dateInfo[0]);
+            var month = Convert.ToInt32(dateInfo[1]);
+            var year = Convert.ToInt32(dateInfo[2]);
+
+            return new DateTime(year, month, day);
         }
     }
 }

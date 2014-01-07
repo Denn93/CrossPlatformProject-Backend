@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="CrawlerBatch_MatchyBackEnd_MatchyService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://145.24.222.183/Matchy/MatchyService.asmx</Value>
+      <Value Profile="(Default)">http://localhost:50100/MatchyBackEnd/MatchyService.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

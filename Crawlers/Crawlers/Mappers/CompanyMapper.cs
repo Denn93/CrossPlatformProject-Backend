@@ -29,7 +29,8 @@ namespace CrawlerBatch.Mappers
                            CompanyDescription = company.CompanyDescription,
                            CompanyEmail = company.CompanyEmail,
                            CompanyID = company.CompanyID,
-                           CompanyName = company.CompanyName
+                           CompanyName = company.CompanyName,
+                           CompanyTel = company.CompanyTel
                        };
         }
 
@@ -42,7 +43,8 @@ namespace CrawlerBatch.Mappers
                     CompanyDescription = company.CompanyDescription,
                     CompanyEmail = company.CompanyEmail,
                     CompanyID = company.CompanyID,
-                    CompanyName = company.CompanyName
+                    CompanyName = company.CompanyName,
+                    CompanyTel = company.CompanyTel
                 };
         }
     }

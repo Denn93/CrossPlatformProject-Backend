@@ -64,8 +64,7 @@ namespace CrawlerBatch.Crawlers
                 }
             }
 
-            Console.WriteLine("Crawling Nationale Vacaturebank Complete");
-            Console.ReadKey();
+            Console.WriteLine(String.Format("Crawling {0} Complete", CrawlerName));
         }
 
         /// <summary>
@@ -89,15 +88,22 @@ namespace CrawlerBatch.Crawlers
             CrawlerData = urlHandler();
         }
 
-        protected override DetailJob GetDetailledInfo(string input)
+        protected override DetailJob GetDetailledInfo(string input, Company company)
         {
-            DetailJob detailJob = new DetailJob();
+            const String resultCompanyTelPattern = @"Tel.:(.*?)<";
+            const String resultCompanyEmailPattern = @"\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b";
+            const String resultCompanyAboutPattern = @"<h2>Bedrijfsprofiel</h2>\s+<p>(.*?)</div>";
+            
             const String resultLinkPattern = @"<a class=""span-18 result-item-link"" href=""(.*?)"">.*?</a> ";
             const String resultDataPattern = @"<div .*? id=""vacature-details"">(.*?)</div>\s+<div id=""abuse-link"" class=""span-auto-r"">.*?";
 
+            DetailJob detailJob = new DetailJob();
             String tempData = urlHandler(GetCrawlerData(resultLinkPattern, input));
 
             detailJob.Data = GetCrawlerData(resultDataPattern, tempData);
+            company.CompanyTel = GetCrawlerData(resultCompanyTelPattern, tempData);
+            company.CompanyEmail = GetCrawlerData(resultCompanyEmailPattern, tempData);
+            company.CompanyDescription = GetCrawlerData(resultCompanyAboutPattern, tempData);
 
             return detailJob;
         }
@@ -113,7 +119,7 @@ namespace CrawlerBatch.Crawlers
             var company = new Company();
 
             job.CrawlerID = _crawlerID;
-            job.JobPlaceDate = StringToDateTime(GetCrawlerData(ResultDatePattern, result));
+            job.JobPlaceDate = StringToDateTime(GetCrawlerData(ResultDatePattern, result)).ToString();
             job.JobTitle = GetCrawlerData(ResultTitlePattern, result);
             job.JobDescription = GetCrawlerData(ResultDescriptionPattern, result);
             job.JobHours = GetCrawlerData(ResultHoursPattern, result);
@@ -122,11 +128,11 @@ namespace CrawlerBatch.Crawlers
 
             company.CompanyName = GetCrawlerData(ResultCompanyPattern, result);
             company.CompanyCity = GetCrawlerData(ResultCityPattern, result);
-            company.CompanyDate = DateTime.Now;
+            company.CompanyDate = DateTime.Now.ToString();
+
+            job.DetailJob = GetDetailledInfo(result, company);
 
             job.Company = company;
-
-            job.DetailJob = GetDetailledInfo(result);
 
             return job;
         }
