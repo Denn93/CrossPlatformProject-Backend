@@ -46,6 +46,8 @@ namespace Processes
             insertData.Add(new KeyValuePair<string, string>("job_ID", obj.Job.JobID.ToString()));
             insertData.Add(new KeyValuePair<string, string>("score", obj.Score.ToString()));
 
+            _dbHandler.Insert("Matches", insertData);
+
             return 0; /*Een match kan nooit 1 insertID terug returnen. 
                       Tabel bestaat uit een gecombineerde PK sleutel*/
         }

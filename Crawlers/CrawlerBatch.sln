@@ -8,6 +8,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MatchyBackEnd", "..\MatchyBackEnd\", "{A30781BD-CE46-4C09-9CB4-ADE2BB52C630}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{dd18d715-712c-4786-b14f-3bf7aa307f5b}|DataAccessObjects.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/MatchyBackEnd"
 		Debug.AspNetCompiler.PhysicalPath = "..\MatchyBackEnd\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\MatchyBackEnd\"

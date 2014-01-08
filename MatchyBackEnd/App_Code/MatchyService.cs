@@ -81,6 +81,15 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public Job[] GetJobByCompany(int companyID)
+    {
+        var where = new List<KeyValuePair<string, string>>();
+        where.Add(new KeyValuePair<string, string>("companyID", companyID.ToString()));
+
+        return new JobProcess().Get(0, where);
+    }
+
+    [WebMethod]
     public int UpdateJob(Job job)
     {
         return new JobProcess().Update(job);

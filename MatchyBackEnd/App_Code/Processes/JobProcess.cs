@@ -13,11 +13,17 @@ namespace Processes
     {
         private readonly List<String> _defaultSelect = new List<string> { "job_id", "crawlerID", "companyID", "source_ID", "education_ID", "title", "description", "place_date", "employment"}; 
 
-        public override Job[] Get(int id = 0, List<KeyValuePair<string, string>> @where = null)
+        public override Job[] Get(int id = 0, List<KeyValuePair<string, string>> where = null)
         {
             _dbHandler = DbHandler.Instance;
 
             var result = new DataTable();
+
+            if (id > 0)
+            {
+                where = new List<KeyValuePair<string, string>>();
+                where.Add(new KeyValuePair<string, string>("job_id", id.ToString()));
+            }
 
             if (id >= 0)
                 result = _dbHandler.Select(_defaultSelect, "jobs", where);

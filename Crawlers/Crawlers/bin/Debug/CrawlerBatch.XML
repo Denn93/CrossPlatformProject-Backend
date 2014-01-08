@@ -1,0 +1,1357 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrawlerBatch</name>
+    </assembly>
+    <members>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.#ctor">
+            <summary>
+            Protected constructor initialiseerd de List met vacatures 
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.Template">
+            <summary>
+            Template Method. Deze methode voert alle acties in een bepaalde volgorde uit. Zodat bij elke crawler de volgorde van uitvoer gelijk is. 
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.Process">
+            <summary>
+            Methode Process bevat een filter die toegepast wordt op de gevonden data
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.GetPageNumbers">
+            <summary>
+            Deze methode haalt de hoeveelheid pagina's op voor de crawler. Bijv de pagina die gecrawled 
+            moet worden bevat 52 pagina's waardoor gescrolled moet worden
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.OpenNewPage">
+            <summary>
+            Deze methode zorgt ervoor dat de crawler naar een nieuwe pagina kan navigeren
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.urlHandler(System.String)">
+            <summary>
+            Deze methode zorgt ervoor dat de url opgehaald kan worden. Dit is bij elke crawler gelijk. 
+            </summary>
+            <param name="url"></param>
+            <returns>Een response String van de opgehaalde pagina</returns>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.GetCrawlerData(System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Deze methode zorgt ervoor dat een bepaalde pattern in een stuk tekst wordt opgezogt. 
+            </summary>
+            <param name="pattern">De pattern die aangeleverd moet worden</param>
+            <param name="data">De data waarin gezogd moet worden. Wanneer leeg zal CrawlerData gepakt worden</param>
+            <param name="isInt">Standaard false. Wanneer true zal de methode wanneer geen resultaat, 0 ipv Niet beschikbaar terug sturen</param>
+            <param name="groupId">/Wanneer een pattern meerdere groups bevat kan deze waarde mee gestuurd worden. Standaard 1. De eerste groep</param>
+            <returns>Het resultaat van de gezochte pattern in de data</returns>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.DetermineEducation(System.String)">
+            <summary>
+            Deze methode wordt gebruikt om te bepalen wat de Education is van een bepaalde string. Er wordt gekeken in de database en vanuit
+            daar wordt er bepaald wat het educationID is. Bestaat hij niet dan zal hij deze toevoegen in database en een id terugsturen
+            </summary>
+            <param name="input">De string die naar education gezet moet worden</param>
+            <returns>Een Education Object. Met educationID en description</returns>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.DetermineSource">
+            <summary>
+            Deze methode wordt gebruikt om te bepalen wat de Source is van een bepaalde string. Er wordt gekeken in de database en vanuit
+            daar wordt er bepaald wat het sourceID is. Bestaat hij niet dan zal hij deze toevoegen in database en een id terugsturen
+            </summary>
+            <returns>Een Source Object. Met sourceID en description</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrawlerBatch.Crawlers.ACrawler.GetDetailledInfo(System.String,DataAccessObjects.Company)" -->
+        <member name="M:CrawlerBatch.Crawlers.ACrawler.StringToDateTime(System.String)">
+            <summary>
+            Handmatige converter van String naar een DataTime object
+            </summary>
+            <param name="date">Bevat de datum die geconverteerd moet worden</param>
+            <returns>Een DateTime object met de datum uit String date</returns>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.Url">
+            <summary>
+            Url Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.CurrentPage">
+            <summary>
+            CurrentPage Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.Pages">
+            <summary>
+            Pages Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.CrawlerData">
+            <summary>
+            CrawlerData Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.Jobs">
+            <summary>
+            Job List Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.Cvs">
+            <summary>
+            Cv List Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.DetailJobs">
+            <summary>
+            DetailJob Getter Setter
+            </summary>
+        </member>
+        <member name="P:CrawlerBatch.Crawlers.ACrawler.Name">
+            <summary>
+            Crawler Name Getter Setter
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.CvEnVacatureBankNl.Process">
+            <summary>
+            Methode Process bevat een filter die toegepast wordt op de gevonden data
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.CvEnVacatureBankNl.GetPageNumbers">
+            <summary>
+            Deze methode haalt de hoeveelheid pagina's op voor de crawler. Bijv de pagina die gecrawled 
+            moet worden bevat 52 pagina's waardoor gescrolled moet worden
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.CvEnVacatureBankNl.OpenNewPage">
+            <summary>
+            Deze methode zorgt ervoor dat de crawler naar een nieuwe pagina kan navigeren
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.CvEnVacatureBankNl.GetResultToResultSet(System.String)">
+            <summary>
+            Deze methode zorgt ervoor dat de opgehaalde string vertaald kan worden naar een Cv object die vervolgens in de Cv List komt te staan
+            </summary>
+            <param name="link">Een string van de opgehaalde html van een specifieke vacature</param>
+            <returns>Een Cv object dat gecrawlde data bevat van een vacature</returns>
+        </member>
+        <member name="T:CrawlerBatch.CrawlerBatches">
+            <summary>
+            CrawlerBatches class. Deze class zorgt ervoor dat alle crawlers gestart worden en dat ze de data versturen naar de webservice
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.CrawlerBatches.BuildCrawlers">
+            <summary>
+            Deze methode maakt alle crawler variablen aan. Deze zet hij in een list. Zodat later hierdoor gelooped kan worden
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.CrawlerBatches.StartCrawlers">
+            <summary>
+            Deze methode zal de gebouwde crawlers gaan starten
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.CrawlerBatches.SubmitData">
+            <summary>
+            Deze methode zal alle data die is gevonden doorsturen naar de webservice 
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.Process">
+            <summary>
+            Methode Process bevat een filter die toegepast wordt op de gevonden data
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.GetPageNumbers">
+            <summary>
+            Deze methode haalt de hoeveelheid pagina's op voor de crawler. Bijv de pagina die gecrawled 
+            moet worden bevat 52 pagina's waardoor gescrolled moet worden
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.OpenNewPage">
+            <summary>
+            Deze methode zorgt ervoor dat de crawler naar een nieuwe pagina kan navigeren
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.GetResultToResultSet(System.String)">
+            <summary>
+            Deze methode zorgd ervoor dat de opgehaalde string vertaald kan worden naar een Job object die vervolgens in de Job List komt te staan
+            </summary>
+            <param name="result">Een string van de opgehaalde html van een specifieke vacature</param>
+            <returns>Een Job object dat gecrawlde data bevat van een vacature</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrawlerBatch.Crawlers.JobbirdCom.GetDetailledInfo(System.String,DataAccessObjects.Company)" -->
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.GetSearchCriteriaFromResult(System.String,DataAccessObjects.Job,DataAccessObjects.Company)">
+            <summary>
+            Deze methode zorgt ervoor dat de het zoekcriteria die in de resultaten staat per vacature wordt opgesplits en in de juiste 
+            variabelen wordt geplaatst
+            </summary>
+            <param name="input">De zoekcriteria</param>
+            <param name="job">Een referentie van het Job object</param>
+            <param name="company">Een referentie van het Company object</param>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.JobbirdCom.DetermineEducation(System.String)">
+            <summary>
+            Deze methode wordt gebruikt om te bepalen wat de Education is van een bepaalde string. Er wordt gekeken in de database en vanuit
+            daar wordt er bepaald wat het educationID is. Bestaat hij niet dan zal hij deze toevoegen in database en een id terugsturen
+            </summary>
+            <param name="input">De string die naar education gezet moet worden</param>
+            <returns>Een Education Object. Met educationID en description</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.AMapper`2.Insert(`0)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="obj"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.AMapper`2.Get(System.Int32)">
+            <summary>
+            Deze methode haalt data op. Op basis van TDao Generic wordt er gekeken welke return type er moet komen en werlke data er opgehaald moet worden
+            </summary>
+            <param name="id">Optionele id veld. Wanneer 0 wordt alles opgehaald uit de webservice</param>
+            <returns>Array met data. Van datatype TDao Generic</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.AMapper`2.MapToService(`0)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="obj">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.AMapper`2.MapFromService(`1)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="obj">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.CompanyMapper">
+            <summary>
+            CompanyMapper class. Inherits van AMapper class. Met Generic Company.cs en MatchyBackEnd.Company.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CompanyMapper.Insert(DataAccessObjects.Company)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="company"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CompanyMapper.MapToService(DataAccessObjects.Company)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="company">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CompanyMapper.MapFromService(CrawlerBatch.MatchyBackEnd.Company)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="company">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.CvMapper">
+            <summary>
+            CvMapper class. Inherits van AMapper class. Met Generic Cv.cs en MatchyBackEnd.Cv.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CvMapper.Insert(DataAccessObjects.Cv)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="cv"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CvMapper.MapToService(DataAccessObjects.Cv)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="cv">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.CvMapper.MapFromService(CrawlerBatch.MatchyBackEnd.Cv)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="cv">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.DetailJobMapper">
+            <summary>
+            DetailJobMapper class. Inherits van AMapper class. Met Generic DetailJob.cs en MatchyBackEnd.DetailJob.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.DetailJobMapper.Insert(DataAccessObjects.DetailJob)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="detailJob"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.DetailJobMapper.MapToService(DataAccessObjects.DetailJob)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="detailJob">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.DetailJobMapper.MapFromService(CrawlerBatch.MatchyBackEnd.DetailJob)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="detailJob">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.EducationMapper">
+            <summary>
+            EducationMapper class. Inherits van AMapper class. Met Generic Education.cs en MatchyBackEnd.Education.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.EducationMapper.Insert(DataAccessObjects.Education)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="education"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.EducationMapper.Get(System.Int32)">
+            <summary>
+            Deze methode haalt data op. Op basis van TDao Generic wordt er gekeken welke return type er moet komen en werlke data er opgehaald moet worden
+            </summary>
+            <param name="id">Optionele id veld. Wanneer 0 wordt alles opgehaald uit de webservice</param>
+            <returns>Array met data. Van datatype TDao Generic</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.EducationMapper.MapToService(DataAccessObjects.Education)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="education">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.EducationMapper.MapFromService(CrawlerBatch.MatchyBackEnd.Education)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="education">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.JobMapper">
+            <summary>
+            JobMapper class. Inherits van AMapper class. Met Generic Job.cs en MatchyBackEnd.Job.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.JobMapper.Insert(DataAccessObjects.Job)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="job"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.JobMapper.MapToService(DataAccessObjects.Job)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="job">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.JobMapper.MapFromService(CrawlerBatch.MatchyBackEnd.Job)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="job">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="T:CrawlerBatch.Mappers.SourceMapper">
+            <summary>
+            SourceMapper class. Inherits van AMapper class. Met Generic Source.cs en MatchyBackEnd.Source.cs
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.SourceMapper.Insert(DataAccessObjects.Source)">
+            <summary>
+            Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+            </summary>
+            <param name="source"></param>
+            <returns>Inserted id</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.SourceMapper.Get(System.Int32)">
+            <summary>
+            Deze methode haalt data op. Op basis van TDao Generic wordt er gekeken welke return type er moet komen en werlke data er opgehaald moet worden
+            </summary>
+            <param name="id">Optionele id veld. Wanneer 0 wordt alles opgehaald uit de webservice</param>
+            <returns>Array met data. Van datatype TDao Generic</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.SourceMapper.MapToService(DataAccessObjects.Source)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="source">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van de backEnd</returns>
+        </member>
+        <member name="M:CrawlerBatch.Mappers.SourceMapper.MapFromService(CrawlerBatch.MatchyBackEnd.Source)">
+            <summary>
+            Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+            Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+            overeenkwamen vanwege import library met gebruikte dataobjecten
+            </summary>
+            <param name="source">Het data object dat omgezet moet worden</param>
+            <returns>Het data object van deze crawler</returns>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.VacatureBankNl.Process">
+            <summary>
+            Methode Process bevat een filter die toegepast wordt op de gevonden data
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.VacatureBankNl.GetPageNumbers">
+            <summary>
+            Deze methode haalt de hoeveelheid pagina's op voor de crawler. Bijv de pagina die gecrawled 
+            moet worden bevat 52 pagina's waardoor gescrolled moet worden
+            </summary>
+        </member>
+        <member name="M:CrawlerBatch.Crawlers.VacatureBankNl.OpenNewPage">
+            <summary>
+            Deze methode zorgt ervoor dat de crawler naar een nieuwe pagina kan navigeren
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:CrawlerBatch.Crawlers.VacatureBankNl.GetDetailledInfo(System.String,DataAccessObjects.Company)" -->
+        <member name="M:CrawlerBatch.Crawlers.VacatureBankNl.GetResultToResultSet(System.String)">
+            <summary>
+            Deze methode zorgd ervoor dat de opgehaalde string vertaald kan worden naar een Job object die vervolgens in de Job List komt te staan
+            </summary>
+            <param name="result">Een string van de opgehaalde html van een specifieke vacature of cv</param>
+            <returns>Een Job object dat gecrawlde data bevat van een vacature</returns>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.MatchyService">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.Login(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.LoginAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.LoginAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddUser(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddUserAsync(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddUserAsync(CrawlerBatch.MatchyBackEnd.User,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateUser(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateUserAsync(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateUserAsync(CrawlerBatch.MatchyBackEnd.User,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteUser(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteUserAsync(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteUserAsync(CrawlerBatch.MatchyBackEnd.User,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetUser(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetUserAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetUserAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddJob(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddJobAsync(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddJobAsync(CrawlerBatch.MatchyBackEnd.Job,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJob(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJob(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJobAsync(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJobAsync(CrawlerBatch.MatchyBackEnd.Job,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteJob(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteJobAsync(CrawlerBatch.MatchyBackEnd.Job)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteJobAsync(CrawlerBatch.MatchyBackEnd.Job,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCv(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCvAsync(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCvAsync(CrawlerBatch.MatchyBackEnd.Cv,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCv(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCvAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCvAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCv(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCvAsync(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCvAsync(CrawlerBatch.MatchyBackEnd.Cv,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCv(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCvAsync(CrawlerBatch.MatchyBackEnd.Cv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCvAsync(CrawlerBatch.MatchyBackEnd.Cv,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddMatch(CrawlerBatch.MatchyBackEnd.Match)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddMatchAsync(CrawlerBatch.MatchyBackEnd.Match)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddMatchAsync(CrawlerBatch.MatchyBackEnd.Match,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatch(CrawlerBatch.MatchyBackEnd.Match)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(CrawlerBatch.MatchyBackEnd.Match)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(CrawlerBatch.MatchyBackEnd.Match,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetEdu(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetEduAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetEduAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddEdu(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddEduAsync(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddEduAsync(CrawlerBatch.MatchyBackEnd.Education,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteEdu(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteEduAsync(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteEduAsync(CrawlerBatch.MatchyBackEnd.Education,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateEdu(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateEduAsync(CrawlerBatch.MatchyBackEnd.Education)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateEduAsync(CrawlerBatch.MatchyBackEnd.Education,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetSource(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetSourceAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetSourceAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddSource(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddSourceAsync(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddSourceAsync(CrawlerBatch.MatchyBackEnd.Source,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteSource(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteSourceAsync(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteSourceAsync(CrawlerBatch.MatchyBackEnd.Source,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateSource(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateSourceAsync(CrawlerBatch.MatchyBackEnd.Source)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateSourceAsync(CrawlerBatch.MatchyBackEnd.Source,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCompany(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCompanyAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetCompanyAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCompany(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCompanyAsync(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddCompanyAsync(CrawlerBatch.MatchyBackEnd.Company,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCompany(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCompanyAsync(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCompanyAsync(CrawlerBatch.MatchyBackEnd.Company,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCompany(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCompanyAsync(CrawlerBatch.MatchyBackEnd.Company)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCompanyAsync(CrawlerBatch.MatchyBackEnd.Company,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.Login2(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.Login2Async(CrawlerBatch.MatchyBackEnd.User)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.Login2Async(CrawlerBatch.MatchyBackEnd.User,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddDetailJob(CrawlerBatch.MatchyBackEnd.DetailJob)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddDetailJobAsync(CrawlerBatch.MatchyBackEnd.DetailJob)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddDetailJobAsync(CrawlerBatch.MatchyBackEnd.DetailJob,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetDetailJob(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetDetailJobAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetDetailJobAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployee(CrawlerBatch.MatchyBackEnd.SearchCompany)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.SearchCompany)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.SearchCompany,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompany(CrawlerBatch.MatchyBackEnd.SearchCv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyAsync(CrawlerBatch.MatchyBackEnd.SearchCv)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyAsync(CrawlerBatch.MatchyBackEnd.SearchCv,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.LoginCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetUserCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddCvCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetCvCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCvCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCvCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddMatchCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetEduCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddEduCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteEduCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateEduCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetSourceCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddSourceCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteSourceCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateSourceCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.DeleteCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.Login2Completed">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddDetailJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetDetailJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.User">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.Email">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.BirthDay">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.ProfileId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.Type">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.UserCv">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.UserCompany">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.MayLogin">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.User.Pass">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Cv">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.CvID">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Name">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.CrawlerId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Date">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Profession">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Discipline">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.EducationLevel">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Province">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Hours">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Email">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.City">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Sex">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Age">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.EducationHistory">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.WorkExperience">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Source">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Personal">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.Interests">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Cv.JobRequirements">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Education">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Education.EducationId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Education.Name">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchCv">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Description">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Education">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Branche">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.City">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Name">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Type">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchCompany">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Description">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Education">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Branche">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.City">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Name">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Type">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Match">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Match.Cv">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Match.Job">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Match.Score">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Job">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.JobID">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.CrawlerID">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.Company">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.Education">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.JobTitle">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.JobDescription">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.JobPlaceDate">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.JobHours">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.Source">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Job.DetailJob">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Company">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyID">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyName">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyDescription">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyDate">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyEmail">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyTel">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Company.CompanyCity">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Source">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Source.SourceId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Source.Description">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DetailJob">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DetailJob.DetailJobId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DetailJob.JobId">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DetailJob.Data">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.LoginCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.LoginCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.LoginCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetUserCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetUserCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetUserCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddCvCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddCvCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddCvCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetCvCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetCvCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetCvCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateCvCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateCvCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateCvCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteCvCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteCvCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteCvCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddMatchCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddMatchCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddMatchCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetMatchCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetEduCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetEduCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetEduCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddEduCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddEduCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddEduCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteEduCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteEduCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteEduCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateEduCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateEduCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateEduCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetSourceCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetSourceCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetSourceCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddSourceCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddSourceCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddSourceCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteSourceCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteSourceCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteSourceCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateSourceCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateSourceCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateSourceCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.DeleteCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.DeleteCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.UpdateCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.UpdateCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Login2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.Login2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Login2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddDetailJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.AddDetailJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.AddDetailJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetDetailJobCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetDetailJobCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetDetailJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchByEmployeeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchByEmployeeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchByEmployeeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>
