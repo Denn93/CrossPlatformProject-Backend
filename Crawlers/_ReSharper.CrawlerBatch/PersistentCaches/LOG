@@ -1,13 +1,14 @@
-2014/01/07-09:15:20.517 c64 Recovering log #12
-2014/01/07-09:15:20.518 c64 Level-0 table #14: started
-2014/01/07-09:15:20.563 c64 Level-0 table #14: 42679 bytes OK
-2014/01/07-09:15:20.695 c64 Delete type=0 #12
-2014/01/07-09:15:20.695 c64 Delete type=3 #10
-2014/01/07-09:15:20.698 e44 Compacting 4@0 + 0@1 files
-2014/01/07-09:15:20.908 e44 Generated table #16: 216 keys, 47665 bytes
-2014/01/07-09:15:20.908 e44 Compacted 4@0 + 0@1 files => 47665 bytes
-2014/01/07-09:15:20.963 e44 Delete type=2 #5
-2014/01/07-09:15:20.963 e44 Delete type=2 #8
-2014/01/07-09:15:20.963 e44 Delete type=2 #11
-2014/01/07-09:15:20.964 e44 Delete type=2 #14
-2014/01/07-09:15:20.964 e44 compacted to: files[ 0 1 0 0 0 0 0 ]
+2014/01/08-09:31:42.578 fbc Recovering log #25
+2014/01/08-09:31:42.578 fbc Level-0 table #27: started
+2014/01/08-09:31:42.651 fbc Level-0 table #27: 35588 bytes OK
+2014/01/08-09:31:42.706 fbc Delete type=0 #25
+2014/01/08-09:31:42.706 fbc Delete type=3 #23
+2014/01/08-09:31:42.713 15a4 Compacting 4@0 + 1@1 files
+2014/01/08-09:31:42.774 15a4 Generated table #29: 248 keys, 58269 bytes
+2014/01/08-09:31:42.774 15a4 Compacted 4@0 + 1@1 files => 58269 bytes
+2014/01/08-09:31:42.800 15a4 Delete type=2 #16
+2014/01/08-09:31:42.800 15a4 Delete type=2 #18
+2014/01/08-09:31:42.801 15a4 Delete type=2 #21
+2014/01/08-09:31:42.801 15a4 Delete type=2 #24
+2014/01/08-09:31:42.801 15a4 Delete type=2 #27
+2014/01/08-09:31:42.801 15a4 compacted to: files[ 0 1 0 0 0 0 0 ]

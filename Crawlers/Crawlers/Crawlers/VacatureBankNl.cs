@@ -14,6 +14,8 @@ namespace CrawlerBatch.Crawlers
             + "JAVA+OF+OF+OF+.NET+OF+HTML+OF+CSS+OF+JavaScript+OF+Programmeur%2C+OF+Ontwikkelaar%2C+OF+IT%2C+OF+C%23/"
             + "distance/%3E+75km/output/html/items_per_page/10/page/ {0} /ignore_ids";
 
+        #region Pattern Constants
+
         private const String GetLastPagePattern = @"rel=""nofollow"">(\d+)</a>\s+</li>\s+</ul>";
         private const String GetResultsPattern = @"<li id=""vacature-(\d+)"" class=""result-item .*?"">(.*?)</li>";
         private const String ResultDatePattern = @"<div class=""result-item-date"">.*?<a href="".*?"">(.*?)</a>.*?</div>";
@@ -24,7 +26,16 @@ namespace CrawlerBatch.Crawlers
         private const String ResultHoursPattern = @"<div class=""result-item-hours"">.*?<span>.*?<a .*?>(.*?)</a>.*?</span>.*?</div>";
         private const String ResultEducationPattern =  @"<div class=""result-item-educationlevel"">.*?<a .*?>(.*?)</a>.*?</div>";
 
-        private int _crawlerID;
+        private const String ResultCompanyTelPattern = @"Tel.:(.*?)<";
+        private const String ResultCompanyEmailPattern = @"\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b";
+        private const String ResultCompanyAboutPattern = @"<h2>Bedrijfsprofiel</h2>\s+<p>(.*?)</div>";
+
+        private const String ResultLinkPattern = @"<a class=""span-18 result-item-link"" href=""(.*?)"">.*?</a> ";
+        private const String ResultDataPattern = @"<div .*? id=""vacature-details"">(.*?)</div>\s+<div id=""abuse-link"" class=""span-auto-r"">.*?";
+
+        #endregion
+
+        private int _crawlerId;
 
         public VacatureBankNl()
         {
@@ -41,7 +52,6 @@ namespace CrawlerBatch.Crawlers
         {
             CrawlerData = urlHandler();
 
-            Console.WriteLine("Crawling started");
             GetPageNumbers();
 
             for (var currentPage = CurrentPage; currentPage <= Pages; currentPage++)
@@ -56,15 +66,13 @@ namespace CrawlerBatch.Crawlers
 
                 foreach (Match result in pageResults)
                 {
-                    _crawlerID = Convert.ToInt32(result.Groups[1].Value);
+                    _crawlerId = Convert.ToInt32(result.Groups[1].Value);
 
                     var resultContent = result.Groups[2].Value;
 
                     Jobs.Add(GetResultToResultSet(resultContent));
                 }
             }
-
-            Console.WriteLine(String.Format("Crawling {0} Complete", CrawlerName));
         }
 
         /// <summary>
@@ -88,22 +96,23 @@ namespace CrawlerBatch.Crawlers
             CrawlerData = urlHandler();
         }
 
+        /// <summary>
+        /// Deze methode zal de vacature helemaal openen. En vervolgens de data die hier in staat crawlen en verwerken. 
+        /// Deze methode throws een NotSupportedExceptio zodat een crawler die deze methode niet overrided hem ook niet kan gebruiken. 
+        /// Wanneer deze abstract is moet hij geimplementeerd worden en dat is nu niet het geval.
+        /// </summary>
+        /// <param name="input"><De input data waarin gecrawled moet gaan worden/param>
+        /// <param name="company">Het company object die mede hier ook gevuld wordt. </param>
+        /// <returns>Deze methode returned vervolgens een DetailJob</returns>
         protected override DetailJob GetDetailledInfo(string input, Company company)
         {
-            const String resultCompanyTelPattern = @"Tel.:(.*?)<";
-            const String resultCompanyEmailPattern = @"\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b";
-            const String resultCompanyAboutPattern = @"<h2>Bedrijfsprofiel</h2>\s+<p>(.*?)</div>";
-            
-            const String resultLinkPattern = @"<a class=""span-18 result-item-link"" href=""(.*?)"">.*?</a> ";
-            const String resultDataPattern = @"<div .*? id=""vacature-details"">(.*?)</div>\s+<div id=""abuse-link"" class=""span-auto-r"">.*?";
-
             DetailJob detailJob = new DetailJob();
-            String tempData = urlHandler(GetCrawlerData(resultLinkPattern, input));
+            String tempData = urlHandler(GetCrawlerData(ResultLinkPattern, input));
 
-            detailJob.Data = GetCrawlerData(resultDataPattern, tempData);
-            company.CompanyTel = GetCrawlerData(resultCompanyTelPattern, tempData);
-            company.CompanyEmail = GetCrawlerData(resultCompanyEmailPattern, tempData);
-            company.CompanyDescription = GetCrawlerData(resultCompanyAboutPattern, tempData);
+            detailJob.Data = GetCrawlerData(ResultDataPattern, tempData);
+            company.CompanyTel = GetCrawlerData(ResultCompanyTelPattern, tempData);
+            company.CompanyEmail = GetCrawlerData(ResultCompanyEmailPattern, tempData);
+            company.CompanyDescription = GetCrawlerData(ResultCompanyAboutPattern, tempData);
 
             return detailJob;
         }
@@ -111,14 +120,14 @@ namespace CrawlerBatch.Crawlers
         /// <summary>
         /// Deze methode zorgd ervoor dat de opgehaalde string vertaald kan worden naar een Job object die vervolgens in de Job List komt te staan
         /// </summary>
-        /// <param name="result">Een string van de opgehaalde html van een specifieke vacature</param>
+        /// <param name="result">Een string van de opgehaalde html van een specifieke vacature of cv</param>
         /// <returns>Een Job object dat gecrawlde data bevat van een vacature</returns>
         private Job GetResultToResultSet(String result)
         {
             var job = new Job();
             var company = new Company();
 
-            job.CrawlerID = _crawlerID;
+            job.CrawlerID = _crawlerId;
             job.JobPlaceDate = StringToDateTime(GetCrawlerData(ResultDatePattern, result)).ToString();
             job.JobTitle = GetCrawlerData(ResultTitlePattern, result);
             job.JobDescription = GetCrawlerData(ResultDescriptionPattern, result);
@@ -135,22 +144,6 @@ namespace CrawlerBatch.Crawlers
             job.Company = company;
 
             return job;
-        }
-
-        /// <summary>
-        /// Handmatige converter van String naar een DataTime object
-        /// </summary>
-        /// <param name="date">Bevat de datum die geconverteerd moet worden</param>
-        /// <returns>Een DateTime object met de datum uit String date</returns>
-        private DateTime StringToDateTime(String date)
-        {
-            var dateInfo = date.Split('-');
-
-            var day = Convert.ToInt32(dateInfo[0]);
-            var month = Convert.ToInt32(dateInfo[1]);
-            var year = Convert.ToInt32(dateInfo[2]);
-
-            return new DateTime(year, month, day);
         }
     }
 }

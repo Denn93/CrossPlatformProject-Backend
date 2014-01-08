@@ -1,4 +1,5 @@
-﻿using CrawlerBatch.MatchyBackEnd;
+﻿using System;
+using CrawlerBatch.MatchyBackEnd;
 
 namespace CrawlerBatch.Mappers
 {
@@ -11,13 +12,43 @@ namespace CrawlerBatch.Mappers
             MatchyBackend = new MatchyService();
         }
 
-        public abstract int Insert(TDao obj);
+        /// <summary>
+        /// Insert Methode. Deze methode zorgt ervoor dat de gecrawlde data naar de webservice gestuurd kan worden voor insert
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>Inserted id</returns>
+        public virtual int Insert(TDao obj)
+        {
+            throw new NotImplementedException();
+        }
 
-        public abstract TDao[] Get(int id = 0);
+        /// <summary>
+        /// Deze methode haalt data op. Op basis van TDao Generic wordt er gekeken welke return type er moet komen en werlke data er opgehaald moet worden
+        /// </summary>
+        /// <param name="id">Optionele id veld. Wanneer 0 wordt alles opgehaald uit de webservice</param>
+        /// <returns>Array met data. Van datatype TDao Generic</returns>
+        public virtual TDao[] Get(int id = 0)
+        {
+            throw new NotImplementedException();
+        }
 
-        public abstract TServicedao MapToService(TDao education);
+        /// <summary>
+        /// Deze methode zorgt ervoor dat de data vanuit deze crawler omgezet kan worden naar de datatypes van de backEnd. 
+        /// Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+        /// overeenkwamen vanwege import library met gebruikte dataobjecten
+        /// </summary>
+        /// <param name="obj">Het data object dat omgezet moet worden</param>
+        /// <returns>Het data object van de backEnd</returns>
+        public abstract TServicedao MapToService(TDao obj);
 
-        public abstract TDao MapFromService(TServicedao education);
+        /// <summary>
+        /// Deze methode zorgt ervoor dat de data vanuit de backend omgezet kan worden naar de datatypes van deze crawler. 
+        /// Dus een handmatige serializer. Omdat we een ingebouwde serializer niet werkend kregen. Terwijl de datatypes exact 
+        /// overeenkwamen vanwege import library met gebruikte dataobjecten
+        /// </summary>
+        /// <param name="obj">Het data object dat omgezet moet worden</param>
+        /// <returns>Het data object van deze crawler</returns>
+        public abstract TDao MapFromService(TServicedao obj);
 
     }
 }

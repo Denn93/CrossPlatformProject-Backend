@@ -14,3 +14,4 @@ G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\match
 G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\DataAccessObjects.pdb
 G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.exe
 G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\obj\Debug\CrawlerBatch.pdb
+G:\Dropbox\School\Hro - Informatica\Jaar 2\Kwartaal 1\Repositories\Project\matchy-backend\Crawlers\Crawlers\bin\Debug\CrawlerBatch.XML

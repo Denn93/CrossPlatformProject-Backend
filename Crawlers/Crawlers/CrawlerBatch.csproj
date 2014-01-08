@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CrawlerBatch.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,9 +65,6 @@
     <Compile Include="Crawlers\ACrawler.cs" />
     <Compile Include="CrawlerBatches.cs" />
     <Compile Include="Crawlers\JobbirdCom.cs" />
-    <Compile Include="CrawlerWebClient.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Mappers\AMapper.cs" />
     <Compile Include="Mappers\CompanyMapper.cs" />
     <Compile Include="Mappers\CvMapper.cs" />
@@ -154,10 +152,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:50100/MatchyBackEnd/MatchyService.asmx">
+    <WebReferenceUrl Include="http://localhost:56487/MatchyBackEnd/MatchyService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MatchyBackEnd\</RelPath>
-      <UpdateFromURL>http://localhost:50100/MatchyBackEnd/MatchyService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:56487/MatchyBackEnd/MatchyService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

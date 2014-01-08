@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using CrawlerBatch.Mappers;
 using DataAccessObjects;
 using Match = System.Text.RegularExpressions.Match;
@@ -15,6 +14,7 @@ namespace CrawlerBatch.Crawlers
         private const String BaseURL = "http://www.jobbird.com";
         private const String URL = "http://www.jobbird.com/nl/kandidaat/vacature-zoekresultaat?{0}{1}{2}search=it";
 
+        #region Pattern Constants
         private const String GetLastPagePattern = @"<li class=""pager-last last"">.*?<a href="".*?page=(\d+).*?"" class=""active"">";
         private const String GetResultsPattern = @"<a class=""linkVacature .*?"" .*?>(.*?)</a>";
 
@@ -23,8 +23,17 @@ namespace CrawlerBatch.Crawlers
         private const String ResultTitlePattern = @"<span class=""titel"">(.*?)</span>";
         private const String ResultDescriptionPattern = @"<div class=""omschrijving"">(.*?)</div>";
 
-       // private enum EductionLevels { HBO, MBO, Universitair, HAVO, [Description("VMBO / MAVO")]VMBO, VWO, LBO};
-  
+        private const String ResultLinkPattern = @"<table class=""tabelVacature"" onClick=""redirect\('(.*?)'\)"">";
+        private const String ResultDataPattern = @"<div class=""vacatureSubtitels"">(.*?)</div><div class=""VacatureDetail-buttons"">";
+        private const String ResultCompanyLinkPattern = @"</div><a href=""(.*?)""><abbr title=""Bedrijfspresentatie"">";
+        private const String ResultCompanyTelPattern = @"<span class=""field-content bedrijfspres-tel"">(.*?)</span>";
+        private const String ResultCompanyEmailPattern = @"<span class=""field-content bedrijfspres-email"">.*?<a.*?>(.*?)</a>";
+        private const String ResultCompanyAboutPattern = @"<div class=""views-field views-field-php-2"">.*?->\s+</span>(.*?)<a.*?>Volledige omschrijving</a>";
+        private const String ResultCompanyNamePattern = @"<td valign=""middle""><h1>(.*?)</h1></td>";
+
+        private const string SearchCriteriaSplitPattern = @"\s-\s";
+        #endregion
+
         public JobbirdCom()
         {
             CurrentPage = 0;
@@ -39,7 +48,6 @@ namespace CrawlerBatch.Crawlers
         {
             CrawlerData = urlHandler();
 
-            Console.WriteLine("Crawling started");
             GetPageNumbers();
 
             for (int currentPage = CurrentPage; currentPage < Pages; currentPage++)
@@ -53,8 +61,6 @@ namespace CrawlerBatch.Crawlers
                 if (currentPage != 0)
                     OpenNewPage();
 
-                
-
                 var pageResults = Regex.Matches(CrawlerData, GetResultsPattern, RegexOptions.Singleline);
 
                 var i = 0;
@@ -65,8 +71,6 @@ namespace CrawlerBatch.Crawlers
                     Console.WriteLine(i.ToString());
                 }
             }
-
-            Console.WriteLine(String.Format("Crawling {0} Complete", CrawlerName));
         }
 
         /// <summary>
@@ -115,37 +119,37 @@ namespace CrawlerBatch.Crawlers
             return job;
         }
 
+        /// <summary>
+        /// Deze methode zal de vacature helemaal openen. En vervolgens de data die hier in staat crawlen en verwerken. 
+        /// Deze methode throws een NotSupportedException zodat een crawler die deze methode niet overrided hem ook niet kan gebruiken. 
+        /// Wanneer deze abstract is moet hij geimplementeerd worden en dat is nu niet het geval.
+        /// </summary>
+        /// <param name="input"><De input data waarin gecrawled moet gaan worden/param>
+        /// <param name="company">Het company object die mede hier ook gevuld wordt. </param>
+        /// <returns>Deze methode returned vervolgens een DetailJob</returns>
         protected override DetailJob GetDetailledInfo(string input, Company company)
         {
-            const String resultLinkPattern = @"<table class=""tabelVacature"" onClick=""redirect\('(.*?)'\)"">";
-            const String resultDataPattern = @"<div class=""vacatureSubtitels"">(.*?)</div><div class=""VacatureDetail-buttons"">";
-            const String resultCompanyLinkPattern = @"</div><a href=""(.*?)""><abbr title=""Bedrijfspresentatie"">";
-            const String resultCompanyTelPattern = @"<span class=""field-content bedrijfspres-tel"">(.*?)</span>";
-            const String resultCompanyEmailPattern = @"<span class=""field-content bedrijfspres-email"">.*?<a.*?>(.*?)</a>";
-            const String resultCompanyAboutPattern = @"<div class=""views-field views-field-php-2"">.*?->\s+</span>(.*?)<a.*?>Volledige omschrijving</a>";
-            const String resultCompanyNamePattern = @"<td valign=""middle""><h1>(.*?)</h1></td>";
-
             DetailJob detailJob = new DetailJob();
 
-            String tempData = urlHandler(BaseURL + GetCrawlerData(resultLinkPattern, input));
+            String tempData = urlHandler(BaseURL + GetCrawlerData(ResultLinkPattern, input));
 
-            detailJob.Data = GetCrawlerData(resultDataPattern, tempData);
+            detailJob.Data = GetCrawlerData(ResultDataPattern, tempData);
 
-            if (!GetCrawlerData(resultCompanyLinkPattern, tempData).Equals("Niet Beschikbaar"))
+            if (!GetCrawlerData(ResultCompanyLinkPattern, tempData).Equals(StringValueNotFound))
             {
-                tempData = urlHandler(BaseURL + GetCrawlerData(resultCompanyLinkPattern, tempData));
+                tempData = urlHandler(BaseURL + GetCrawlerData(ResultCompanyLinkPattern, tempData));
 
-                company.CompanyDescription = GetCrawlerData(resultCompanyAboutPattern, tempData);
-                company.CompanyEmail = GetCrawlerData(resultCompanyEmailPattern, tempData);
-                company.CompanyTel = GetCrawlerData(resultCompanyTelPattern, tempData);
-                company.CompanyName = GetCrawlerData(resultCompanyNamePattern, tempData);
+                company.CompanyDescription = GetCrawlerData(ResultCompanyAboutPattern, tempData);
+                company.CompanyEmail = GetCrawlerData(ResultCompanyEmailPattern, tempData);
+                company.CompanyTel = GetCrawlerData(ResultCompanyTelPattern, tempData);
+                company.CompanyName = GetCrawlerData(ResultCompanyNamePattern, tempData);
             }
             else
             {
-                company.CompanyDescription = "Niet Beschikbaar";
-                company.CompanyEmail = "Niet Beschikbaar";
-                company.CompanyTel = "Niet Beschikbaar";
-                company.CompanyName = "Niet Beschikbaar";
+                company.CompanyDescription = StringValueNotFound;
+                company.CompanyEmail = StringValueNotFound;
+                company.CompanyTel = StringValueNotFound;
+                company.CompanyName = StringValueNotFound;
             }
             
             return detailJob;
@@ -160,9 +164,7 @@ namespace CrawlerBatch.Crawlers
         /// <param name="company">Een referentie van het Company object</param>
         private void GetSearchCriteriaFromResult(String input, Job job, Company company)
         {
-            const string pattern = @"\s-\s";
-
-            String[] result = Regex.Split(input, pattern);
+            String[] result = Regex.Split(input, SearchCriteriaSplitPattern);
 
             foreach (string t in result)
             {
@@ -188,10 +190,16 @@ namespace CrawlerBatch.Crawlers
                     company.CompanyCity = t;
             }
 
-            job.JobHours = job.JobHours ?? "Niet beschikbaar";
+            job.JobHours = job.JobHours ?? StringValueNotFound;
             job.Education = job.Education ?? new Education();
         }
 
+        /// <summary>
+        /// Deze methode wordt gebruikt om te bepalen wat de Education is van een bepaalde string. Er wordt gekeken in de database en vanuit
+        /// daar wordt er bepaald wat het educationID is. Bestaat hij niet dan zal hij deze toevoegen in database en een id terugsturen
+        /// </summary>
+        /// <param name="input">De string die naar education gezet moet worden</param>
+        /// <returns>Een Education Object. Met educationID en description</returns>
         protected override Education DetermineEducation(string input)
         {
             Education result = null;

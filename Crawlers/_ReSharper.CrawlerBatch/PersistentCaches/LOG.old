@@ -1,5 +1,6 @@
-2014/01/07-01:34:50.225 1610 Recovering log #9
-2014/01/07-01:34:50.225 1610 Level-0 table #11: started
-2014/01/07-01:34:50.402 1610 Level-0 table #11: 16210 bytes OK
-2014/01/07-01:34:50.692 1610 Delete type=0 #9
-2014/01/07-01:34:50.692 1610 Delete type=3 #7
+2014/01/08-08:37:28.320 bac Recovering log #22
+2014/01/08-08:37:28.321 bac Level-0 table #24: started
+2014/01/08-08:37:28.409 bac Level-0 table #24: 99329 bytes OK
+2014/01/08-08:37:28.482 bac Delete type=0 #19
+2014/01/08-08:37:28.482 bac Delete type=0 #22
+2014/01/08-08:37:28.483 bac Delete type=3 #20

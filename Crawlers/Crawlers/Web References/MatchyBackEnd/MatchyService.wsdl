@@ -1505,10 +1505,10 @@
   </wsdl:binding>
   <wsdl:service name="MatchyService">
     <wsdl:port name="MatchyServiceSoap" binding="tns:MatchyServiceSoap">
-      <soap:address location="http://localhost:50100/MatchyBackEnd/MatchyService.asmx" />
+      <soap:address location="http://localhost:56487/MatchyBackEnd/MatchyService.asmx" />
     </wsdl:port>
     <wsdl:port name="MatchyServiceSoap12" binding="tns:MatchyServiceSoap12">
-      <soap12:address location="http://localhost:50100/MatchyBackEnd/MatchyService.asmx" />
+      <soap12:address location="http://localhost:56487/MatchyBackEnd/MatchyService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

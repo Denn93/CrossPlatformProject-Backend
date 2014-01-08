@@ -2,34 +2,34 @@
   <RecentFiles>
     <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:App.config" caret="0" fromTop="0" />
     <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Properties/f:AssemblyInfo.cs" caret="0" fromTop="0" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="892" fromTop="27" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:JobMapper.cs" caret="1674" fromTop="45" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="1164" fromTop="25" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="137" fromTop="2" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="479" fromTop="0" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="865" fromTop="8" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="1229" fromTop="35" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:AMapper.cs" caret="64" fromTop="2" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CvMapper.cs" caret="474" fromTop="19" />
     <File id="95A0289B-208B-44AE-A87B-641A6AEE0E6A/d:App_Code/d:Processes/f:SourceProcess.cs" caret="1347" fromTop="42" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="2456" fromTop="7" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:CvEnVacatureBankNl.cs" caret="1154" fromTop="11" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="2409" fromTop="9" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="1885" fromTop="7" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:CvEnVacatureBankNl.cs" caret="1613" fromTop="0" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="4632" fromTop="89" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="7064" fromTop="38" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="1669" fromTop="48" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:AMapper.cs" caret="1169" fromTop="31" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="514" fromTop="13" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CvMapper.cs" caret="672" fromTop="19" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="2070" fromTop="42" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="0" fromTop="0" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="1987" fromTop="40" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:JobMapper.cs" caret="3061" fromTop="21" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="2832" fromTop="53" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="722" fromTop="17" />
   </RecentFiles>
   <RecentEdits>
     <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:Program.cs" caret="137" fromTop="2" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="72" fromTop="2" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="52" fromTop="1" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="1806" fromTop="17" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:AMapper.cs" caret="60" fromTop="2" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="1229" fromTop="23" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CvMapper.cs" caret="1691" fromTop="29" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="892" fromTop="27" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:JobMapper.cs" caret="1674" fromTop="27" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="1164" fromTop="25" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="161" fromTop="5" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="1184" fromTop="17" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:CvEnVacatureBankNl.cs" caret="4552" fromTop="14" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:JobbirdCom.cs" caret="538" fromTop="10" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:VacatureBankNl.cs" caret="7064" fromTop="17" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:CvEnVacatureBankNl.cs" caret="4679" fromTop="36" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:ACrawler.cs" caret="6242" fromTop="19" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:AMapper.cs" caret="1169" fromTop="31" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="514" fromTop="13" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CvMapper.cs" caret="3246" fromTop="48" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="2070" fromTop="42" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="722" fromTop="17" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:JobMapper.cs" caret="3061" fromTop="39" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="2832" fromTop="47" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:CrawlerBatches.cs" caret="2201" fromTop="38" />
   </RecentEdits>
 </RecentFiles>
