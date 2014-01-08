@@ -13,7 +13,7 @@ namespace Processes
     {
         private readonly List<String> _defaultSelect = new List<String> { "profile_ID", "cv_ID", "company_ID", "password", "email", "date"};
 
-        public override User[] Get(int id = 0, List<KeyValuePair<string, string>> where = null)
+        public override User[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 

@@ -142,19 +142,35 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Match[] GetMatch(Match match)
+    public Match[] GetMatch(int id)
     {
-//        if (match.Cv == null)
-//        {
-//            return new MatchesProcess().GetCv(match.Job.JobID);
-//        }
-//
-//        if (match.Job == null)
-//        {
-//            return new MatchesProcess().GetJob(match.Cv.CvID);
-//        }
+        return new MatchesProcess().Get(id);
+    }
 
-        return null;
+    [WebMethod]
+    public Match[] GetMatchByCv(int cv_id, int limit)
+    {
+        var where = new List<KeyValuePair<string, string>>();
+        where.Add(new KeyValuePair<string, string>("cv_ID", cv_id.ToString()));
+        where.Add(new KeyValuePair<string, string>("score", "3"));
+
+        var sqlOperator = new KeyValuePair<String, String>("score", ">");
+
+        return new MatchesProcess().Get(0, where, sqlOperator, "ORDER BY date Limit " + limit);
+    }
+
+    [WebMethod]
+    public Match[] GetMatchByCompany(int companyID, int limit)
+    {
+        var whereCompanyID = new List<KeyValuePair<string, string>>();
+        whereCompanyID.Add(new KeyValuePair<string, string>("companyID", companyID.ToString()));
+
+        var jobID = new JobProcess().Get(0, whereCompanyID).Length == 0 ? -1 : new JobProcess().Get(0, whereCompanyID)[0].JobID;
+       
+        var whereJobID = new List<KeyValuePair<string, string>>();
+        whereJobID.Add(new KeyValuePair<string, string>("job_ID", jobID.ToString()));
+
+        return new MatchesProcess().Get(0, whereJobID, new KeyValuePair<string, string>(), "ORDER BY date LIMIT " + limit);
     }
 
     [WebMethod]

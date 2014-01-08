@@ -11,9 +11,9 @@ namespace Processes
     /// </summary>
     public class SourceProcess : AProcess<Source>
     {
-        private readonly List<String> _defaultSelect = new List<string> { "source_ID", "description" }; 
+        private readonly List<String> _defaultSelect = new List<string> { "source_ID", "description" };
 
-        public override Source[] Get(int id = 0, List<KeyValuePair<string, string>> @where = null)
+        public override Source[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 

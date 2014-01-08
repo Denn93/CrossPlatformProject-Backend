@@ -1,0 +1,1641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://145.24.222.183/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://145.24.222.183/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://145.24.222.183/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BirthDay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProfileId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCv" type="tns:Cv" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCompany" type="tns:Company" />
+          <s:element minOccurs="1" maxOccurs="1" name="MayLogin" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cv">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CvID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CrawlerId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profession" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Discipline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EducationLevel" type="tns:Education" />
+          <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EducationHistory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkExperience" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="tns:Source" />
+          <s:element minOccurs="0" maxOccurs="1" name="Personal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Interests" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobRequirements" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Education">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EducationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Source">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SourceId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Company">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCity" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job" type="tns:Job" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Job">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="JobID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CrawlerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="tns:Company" />
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:Education" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobPlaceDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobHours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="tns:Source" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailJob" type="tns:DetailJob" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetailJob">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DetailJobId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddJobResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJobResult" type="tns:ArrayOfJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJob">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="tns:Job" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetJobByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJobByCompanyResult" type="tns:ArrayOfJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job" type="tns:Job" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateJobResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job" type="tns:Job" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteJobResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cv" type="tns:Cv" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCvResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCvResult" type="tns:ArrayOfCV" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCV">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cv" nillable="true" type="tns:Cv" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cv" type="tns:Cv" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCvResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cv" type="tns:Cv" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCvResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="match" type="tns:Match" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Match">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cv" type="tns:Cv" />
+          <s:element minOccurs="0" maxOccurs="1" name="Job" type="tns:Job" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddMatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddMatchResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchResult" type="tns:ArrayOfMatch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMatch">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Match" nillable="true" type="tns:Match" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMatchByCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cv_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchByCvResult" type="tns:ArrayOfMatch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchByCompanyResult" type="tns:ArrayOfMatch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEdu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEduResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEduResult" type="tns:ArrayOfEducation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEducation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Education" nillable="true" type="tns:Education" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddEdu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="education" type="tns:Education" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEduResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddEduResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEdu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="education" type="tns:Education" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEduResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteEduResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEdu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="education" type="tns:Education" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEduResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateEduResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSourceResult" type="tns:ArrayOfSource" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSource">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Source" nillable="true" type="tns:Source" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddSource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="tns:Source" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSourceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="tns:Source" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteSourceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="tns:Source" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateSourceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyResult" type="tns:ArrayOfCompany" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompany">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCompanyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCompanyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="tns:Company" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCompanyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login2Result" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDetailJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job" type="tns:DetailJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDetailJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddDetailJobResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailJobResult" type="tns:ArrayOfDetailJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDetailJob">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetailJob" nillable="true" type="tns:DetailJob" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchByEmployee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchCompany" type="tns:SearchCompany" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchCompany">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SearchTerm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:Education" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchByEmployeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByEmployeeResult" type="tns:ArrayOfJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchCv" type="tns:SearchCv" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchCv">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SearchTerm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:Education" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="searchByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchByCompanyResult" type="tns:ArrayOfCV" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddJobSoapIn">
+    <wsdl:part name="parameters" element="tns:AddJob" />
+  </wsdl:message>
+  <wsdl:message name="AddJobSoapOut">
+    <wsdl:part name="parameters" element="tns:AddJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJob" />
+  </wsdl:message>
+  <wsdl:message name="GetJobSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetJobByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateJobSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateJob" />
+  </wsdl:message>
+  <wsdl:message name="UpdateJobSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteJobSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteJob" />
+  </wsdl:message>
+  <wsdl:message name="DeleteJobSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCvSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCv" />
+  </wsdl:message>
+  <wsdl:message name="AddCvSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCvSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCv" />
+  </wsdl:message>
+  <wsdl:message name="GetCvSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCvSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCv" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCvSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCvSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCv" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCvSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMatchSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMatch" />
+  </wsdl:message>
+  <wsdl:message name="AddMatchSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatch" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCvSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatchByCv" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCvSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchByCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatchByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEduSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEdu" />
+  </wsdl:message>
+  <wsdl:message name="GetEduSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEduResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddEduSoapIn">
+    <wsdl:part name="parameters" element="tns:AddEdu" />
+  </wsdl:message>
+  <wsdl:message name="AddEduSoapOut">
+    <wsdl:part name="parameters" element="tns:AddEduResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEduSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEdu" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEduSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEduResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEduSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEdu" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEduSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEduResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSource" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSourceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSource" />
+  </wsdl:message>
+  <wsdl:message name="AddSourceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSourceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSource" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSourceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSourceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSource" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSourceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:AddCompany" />
+  </wsdl:message>
+  <wsdl:message name="AddCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:AddCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCompany" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="Login2SoapIn">
+    <wsdl:part name="parameters" element="tns:Login2" />
+  </wsdl:message>
+  <wsdl:message name="Login2SoapOut">
+    <wsdl:part name="parameters" element="tns:Login2Response" />
+  </wsdl:message>
+  <wsdl:message name="AddDetailJobSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDetailJob" />
+  </wsdl:message>
+  <wsdl:message name="AddDetailJobSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDetailJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailJobSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailJob" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailJobSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByEmployeeSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByEmployee" />
+  </wsdl:message>
+  <wsdl:message name="SearchByEmployeeSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:searchByCompany" />
+  </wsdl:message>
+  <wsdl:message name="searchByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:searchByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MatchyServiceSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserSoapIn" />
+      <wsdl:output message="tns:AddUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserSoapIn" />
+      <wsdl:output message="tns:UpdateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddJob">
+      <wsdl:input message="tns:AddJobSoapIn" />
+      <wsdl:output message="tns:AddJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJob">
+      <wsdl:input message="tns:GetJobSoapIn" />
+      <wsdl:output message="tns:GetJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <wsdl:input message="tns:GetJobByCompanySoapIn" />
+      <wsdl:output message="tns:GetJobByCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJob">
+      <wsdl:input message="tns:UpdateJobSoapIn" />
+      <wsdl:output message="tns:UpdateJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJob">
+      <wsdl:input message="tns:DeleteJobSoapIn" />
+      <wsdl:output message="tns:DeleteJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCv">
+      <wsdl:input message="tns:AddCvSoapIn" />
+      <wsdl:output message="tns:AddCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCv">
+      <wsdl:input message="tns:GetCvSoapIn" />
+      <wsdl:output message="tns:GetCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCv">
+      <wsdl:input message="tns:UpdateCvSoapIn" />
+      <wsdl:output message="tns:UpdateCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCv">
+      <wsdl:input message="tns:DeleteCvSoapIn" />
+      <wsdl:output message="tns:DeleteCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMatch">
+      <wsdl:input message="tns:AddMatchSoapIn" />
+      <wsdl:output message="tns:AddMatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatch">
+      <wsdl:input message="tns:GetMatchSoapIn" />
+      <wsdl:output message="tns:GetMatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <wsdl:input message="tns:GetMatchByCvSoapIn" />
+      <wsdl:output message="tns:GetMatchByCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <wsdl:input message="tns:GetMatchByCompanySoapIn" />
+      <wsdl:output message="tns:GetMatchByCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEdu">
+      <wsdl:input message="tns:GetEduSoapIn" />
+      <wsdl:output message="tns:GetEduSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEdu">
+      <wsdl:input message="tns:AddEduSoapIn" />
+      <wsdl:output message="tns:AddEduSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEdu">
+      <wsdl:input message="tns:DeleteEduSoapIn" />
+      <wsdl:output message="tns:DeleteEduSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEdu">
+      <wsdl:input message="tns:UpdateEduSoapIn" />
+      <wsdl:output message="tns:UpdateEduSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <wsdl:input message="tns:GetSourceSoapIn" />
+      <wsdl:output message="tns:GetSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSource">
+      <wsdl:input message="tns:AddSourceSoapIn" />
+      <wsdl:output message="tns:AddSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSource">
+      <wsdl:input message="tns:DeleteSourceSoapIn" />
+      <wsdl:output message="tns:DeleteSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSource">
+      <wsdl:input message="tns:UpdateSourceSoapIn" />
+      <wsdl:output message="tns:UpdateSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <wsdl:input message="tns:GetCompanySoapIn" />
+      <wsdl:output message="tns:GetCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCompany">
+      <wsdl:input message="tns:AddCompanySoapIn" />
+      <wsdl:output message="tns:AddCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input message="tns:DeleteCompanySoapIn" />
+      <wsdl:output message="tns:DeleteCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <wsdl:input message="tns:UpdateCompanySoapIn" />
+      <wsdl:output message="tns:UpdateCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login2">
+      <wsdl:input message="tns:Login2SoapIn" />
+      <wsdl:output message="tns:Login2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDetailJob">
+      <wsdl:input message="tns:AddDetailJobSoapIn" />
+      <wsdl:output message="tns:AddDetailJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailJob">
+      <wsdl:input message="tns:GetDetailJobSoapIn" />
+      <wsdl:output message="tns:GetDetailJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByEmployee">
+      <wsdl:input message="tns:SearchByEmployeeSoapIn" />
+      <wsdl:output message="tns:SearchByEmployeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchByCompany">
+      <wsdl:input message="tns:searchByCompanySoapIn" />
+      <wsdl:output message="tns:searchByCompanySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MatchyServiceSoap" type="tns:MatchyServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://145.24.222.183/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://145.24.222.183/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://145.24.222.183/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://145.24.222.183/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://145.24.222.183/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJob">
+      <soap:operation soapAction="http://145.24.222.183/AddJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJob">
+      <soap:operation soapAction="http://145.24.222.183/GetJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <soap:operation soapAction="http://145.24.222.183/GetJobByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJob">
+      <soap:operation soapAction="http://145.24.222.183/UpdateJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJob">
+      <soap:operation soapAction="http://145.24.222.183/DeleteJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCv">
+      <soap:operation soapAction="http://145.24.222.183/AddCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCv">
+      <soap:operation soapAction="http://145.24.222.183/GetCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCv">
+      <soap:operation soapAction="http://145.24.222.183/UpdateCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCv">
+      <soap:operation soapAction="http://145.24.222.183/DeleteCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMatch">
+      <soap:operation soapAction="http://145.24.222.183/AddMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatch">
+      <soap:operation soapAction="http://145.24.222.183/GetMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <soap:operation soapAction="http://145.24.222.183/GetMatchByCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <soap:operation soapAction="http://145.24.222.183/GetMatchByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEdu">
+      <soap:operation soapAction="http://145.24.222.183/GetEdu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEdu">
+      <soap:operation soapAction="http://145.24.222.183/AddEdu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEdu">
+      <soap:operation soapAction="http://145.24.222.183/DeleteEdu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEdu">
+      <soap:operation soapAction="http://145.24.222.183/UpdateEdu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <soap:operation soapAction="http://145.24.222.183/GetSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSource">
+      <soap:operation soapAction="http://145.24.222.183/AddSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSource">
+      <soap:operation soapAction="http://145.24.222.183/DeleteSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSource">
+      <soap:operation soapAction="http://145.24.222.183/UpdateSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap:operation soapAction="http://145.24.222.183/GetCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompany">
+      <soap:operation soapAction="http://145.24.222.183/AddCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap:operation soapAction="http://145.24.222.183/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <soap:operation soapAction="http://145.24.222.183/UpdateCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login2">
+      <soap:operation soapAction="http://145.24.222.183/Login2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDetailJob">
+      <soap:operation soapAction="http://145.24.222.183/AddDetailJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailJob">
+      <soap:operation soapAction="http://145.24.222.183/GetDetailJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByEmployee">
+      <soap:operation soapAction="http://145.24.222.183/SearchByEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByCompany">
+      <soap:operation soapAction="http://145.24.222.183/searchByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MatchyServiceSoap12" type="tns:MatchyServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://145.24.222.183/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://145.24.222.183/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://145.24.222.183/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJob">
+      <soap12:operation soapAction="http://145.24.222.183/AddJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJob">
+      <soap12:operation soapAction="http://145.24.222.183/GetJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/GetJobByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJob">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJob">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCv">
+      <soap12:operation soapAction="http://145.24.222.183/AddCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCv">
+      <soap12:operation soapAction="http://145.24.222.183/GetCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCv">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCv">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMatch">
+      <soap12:operation soapAction="http://145.24.222.183/AddMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatch">
+      <soap12:operation soapAction="http://145.24.222.183/GetMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <soap12:operation soapAction="http://145.24.222.183/GetMatchByCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/GetMatchByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEdu">
+      <soap12:operation soapAction="http://145.24.222.183/GetEdu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEdu">
+      <soap12:operation soapAction="http://145.24.222.183/AddEdu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEdu">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteEdu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEdu">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateEdu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <soap12:operation soapAction="http://145.24.222.183/GetSource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSource">
+      <soap12:operation soapAction="http://145.24.222.183/AddSource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSource">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteSource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSource">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateSource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap12:operation soapAction="http://145.24.222.183/GetCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompany">
+      <soap12:operation soapAction="http://145.24.222.183/AddCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap12:operation soapAction="http://145.24.222.183/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <soap12:operation soapAction="http://145.24.222.183/UpdateCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login2">
+      <soap12:operation soapAction="http://145.24.222.183/Login2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDetailJob">
+      <soap12:operation soapAction="http://145.24.222.183/AddDetailJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailJob">
+      <soap12:operation soapAction="http://145.24.222.183/GetDetailJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByEmployee">
+      <soap12:operation soapAction="http://145.24.222.183/SearchByEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/searchByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MatchyService">
+    <wsdl:port name="MatchyServiceSoap" binding="tns:MatchyServiceSoap">
+      <soap:address location="http://localhost:58352/MatchyBackEnd/MatchyService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MatchyServiceSoap12" binding="tns:MatchyServiceSoap12">
+      <soap12:address location="http://localhost:58352/MatchyBackEnd/MatchyService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

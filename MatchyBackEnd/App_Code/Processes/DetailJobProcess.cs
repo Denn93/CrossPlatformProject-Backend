@@ -11,9 +11,9 @@ namespace Processes
     /// </summary>
     public class DetailJobProcess : AProcess<DetailJob>
     {
-        private readonly List<String> _defaultSelect = new List<string> { "detailjob_ID", "job_ID", "data"}; 
+        private readonly List<String> _defaultSelect = new List<string> { "detailjob_ID", "job_ID", "data"};
 
-        public override DetailJob[] Get(int id = 0, List<KeyValuePair<string, string>> where = null)
+        public override DetailJob[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 

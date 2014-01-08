@@ -110,36 +110,44 @@ namespace Database
         /// </summary>
         /// <param name="where">Alle waardes die in de where verwerkt moeten worden. Bijvoorbeeld dus veld = waarde </param>
         /// <returns>De volledige query String</returns>
-        private String createWhereString(List<KeyValuePair<String , String>> where)
+        private String createWhereString(List<KeyValuePair<String , String>> where, KeyValuePair<String, String> whereOperator)
         {
             String result = "Where ";
 
             foreach (var pair in where)
             {
+                var sqloperator = whereOperator.Value;
+
+                if (whereOperator.Key.Equals(pair.Key))
+                    sqloperator = whereOperator.Value;
+
                 if (where.IndexOf(pair).Equals(where.Count - 1))
-                    result += String.Format("{0} = '{1}'", pair.Key, pair.Value);
+                    result += String.Format("{0} {1} '{2}'", pair.Key, sqloperator, pair.Value);
                 else
                 {
-                    result += String.Format("{0} = '{1}' AND ", pair.Key, pair.Value);
+                    result += String.Format("{0} {1} '{2}' AND ", pair.Key, sqloperator, pair.Value);
                 }
             }
 
             return result;
         }
 
-        public DataTable Select(List<String> select, String tableName, List<KeyValuePair<String, String>> where = null)
+        public DataTable Select(List<String> select, String tableName, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<string, string>(), String other = "")
         {
             var result = new DataTable();
             MySqlCommand dbCom = _connection.CreateCommand();
 
             String whereString = "";
 
+            if (whereOperator.Key == null)
+                whereOperator = new KeyValuePair<string, string>("default", "=");
+
             if (where != null)
-                whereString = createWhereString(where);
+                whereString = createWhereString(where, whereOperator);
 
             try
             {
-                dbCom.CommandText = String.Format("Select {0} FROM {1} {2}", String.Join(",", select.ToArray()), tableName, whereString);
+                dbCom.CommandText = String.Format("Select {0} FROM {1} {2} {3}", String.Join(",", select.ToArray()), tableName, whereString, other);
 
                 MySqlDataReader dbReader = dbCom.ExecuteReader();
 

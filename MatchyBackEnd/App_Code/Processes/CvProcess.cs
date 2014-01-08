@@ -12,9 +12,9 @@ namespace Processes
     public class CvProcess : AProcess<Cv>
     {
         private readonly List<String> _defaultSelect = new List<string> { "cv_id", "crawlerID", "education_id", "source_id", "name", "personal", "interests", "jobrequirements", 
-                                                                          "email", "city", "place_date", "hours", "profession", "discipline", "province", "age", "experience", "education", "sex"}; 
+                                                                          "email", "city", "place_date", "hours", "profession", "discipline", "province", "age", "experience", "education", "sex"};
 
-        public override Cv[] Get(int id = 0, List<KeyValuePair<string, string>> where = null)
+        public override Cv[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 

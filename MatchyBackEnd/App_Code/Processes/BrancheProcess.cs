@@ -12,9 +12,9 @@ namespace Processes
     /// </summary>
     public class BrancheProcess : AProcess<Branche>
     {
-        private readonly List<String> _defaultSelect = new List<string> { "brancheID", "crawlerID", "companyID", "source_ID", "education_ID", "title", "description", "place_date", "employment" }; 
+        private readonly List<String> _defaultSelect = new List<string> { "brancheID", "crawlerID", "companyID", "source_ID", "education_ID", "title", "description", "place_date", "employment" };
 
-        public override Branche[] Get(int id = 0, List<KeyValuePair<string, string>> @where = null)
+        public override Branche[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 

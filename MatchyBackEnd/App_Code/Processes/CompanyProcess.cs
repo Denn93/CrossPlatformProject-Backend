@@ -11,9 +11,9 @@ namespace Processes
     /// </summary>
     public class CompanyProcess : AProcess<Company>
     {
-        private readonly List<String> _defaultSelect = new List<string> {"company_id", "name", "description", "date", "city", "email", "telnr"}; 
+        private readonly List<String> _defaultSelect = new List<string> {"company_id", "name", "description", "date", "city", "email", "telnr"};
 
-        public override Company[] Get(int id = 0, List<KeyValuePair<string, string>> where = null)
+        public override Company[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
             _dbHandler = DbHandler.Instance;
 
@@ -65,7 +65,7 @@ namespace Processes
             return resultId;
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
+        public override int Delete(int id, List<KeyValuePair<String, String>> where = null)
         {
             throw new NotImplementedException();
         }
