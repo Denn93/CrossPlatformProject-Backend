@@ -148,16 +148,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\..\..\Project 5_6 GTA\Server Bestanden\DataAccessObjects\DataAccessObjects.csproj">
-      <Project>{dd18d715-712c-4786-b14f-3bf7aa307f5b}</Project>
-      <Name>DataAccessObjects</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:50100/MatchyBackEnd/MatchyService.asmx">
+    <WebReferenceUrl Include="http://localhost:58352/MatchyBackEnd/MatchyService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MatchyBackEnd\</RelPath>
-      <UpdateFromURL>http://localhost:50100/MatchyBackEnd/MatchyService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:58352/MatchyBackEnd/MatchyService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -168,6 +162,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\MatchyBackEnd\MatchyService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Dropbox\Project 5_6 GTA\Server Bestanden\DataAccessObjects\DataAccessObjects.csproj">
+      <Project>{dd18d715-712c-4786-b14f-3bf7aa307f5b}</Project>
+      <Name>DataAccessObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

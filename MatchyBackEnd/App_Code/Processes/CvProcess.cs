@@ -19,9 +19,14 @@ namespace Processes
             _dbHandler = DbHandler.Instance;
 
             var result = new DataTable();
-            
+            if (id > 0)
+            {
+                where = new List<KeyValuePair<string, string>>();
+                where.Add(new KeyValuePair<string, string>("cv_ID", id.ToString()));
+            }
+
             if (id >= 0)
-                result = _dbHandler.Select(_defaultSelect, "Cv", where);
+                result = _dbHandler.Select(_defaultSelect, "Cv", where);                
             else if (id == -1)
                 return new Cv[] { new Cv() };
 

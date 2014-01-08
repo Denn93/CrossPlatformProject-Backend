@@ -47,7 +47,7 @@ namespace CrawlerBatch.Crawlers
                 CurrentPage = currentPage;
                 Console.WriteLine(CurrentPage);
 
-                if (currentPage == 6)
+                if (currentPage == 5)
                     break;
 
                 if (currentPage != 0)

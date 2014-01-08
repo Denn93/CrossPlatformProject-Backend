@@ -19,6 +19,12 @@ namespace Processes
 
             var result = new DataTable();
 
+            if (id > 0)
+            {
+                where = new List<KeyValuePair<string, string>>();
+                where.Add(new KeyValuePair<string, string>("detailjob_ID", id.ToString()));
+            }
+
             if (id >= 0)
                 result = _dbHandler.Select(_defaultSelect, "Detailjob", where);
             else if (id == -1)

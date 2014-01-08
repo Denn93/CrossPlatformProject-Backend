@@ -19,6 +19,12 @@ namespace Processes
 
             var result = new DataTable();
 
+            if (id > 0)
+            {
+                where = new List<KeyValuePair<string, string>>();
+                where.Add(new KeyValuePair<string, string>("company_ID", id.ToString()));
+            }
+
             if (id >= 0)
                 result = _dbHandler.Select(_defaultSelect, "Company", where);
             else if (id == -1)
@@ -78,6 +84,8 @@ namespace Processes
             company.CompanyID = Convert.ToInt32(data["company_id"].ToString());
             company.CompanyName = data["name"].ToString();
             company.CompanyCity = data["city"].ToString();
+            company.CompanyEmail = data["email"].ToString();
+            company.CompanyTel = data["telnr"].ToString();
 
             return company;
         }

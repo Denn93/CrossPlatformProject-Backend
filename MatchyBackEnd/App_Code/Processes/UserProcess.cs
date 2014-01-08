@@ -100,13 +100,11 @@ namespace Processes
             catch (NullReferenceException e)
             {
                 _log.Error("No User was found by that email: " + e.Message);
+                user.MayLogin = false;
             }
             catch(Exception e)
             {
                 _log.Error("There was an unexpected error: " + e.Message);
-            }
-            finally
-            {
                 user.MayLogin = false;
             }
             
