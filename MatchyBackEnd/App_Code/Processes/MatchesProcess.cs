@@ -41,13 +41,16 @@ namespace Processes
             where.Add(new KeyValuePair<string, string>("cv_ID", obj.Cv.CvID.ToString()));
             var matches = Get(0, where);
 
-            var insertData = new List<KeyValuePair<String, String>>();
-            insertData.Add(new KeyValuePair<string, string>("cv_ID", obj.Cv.CvID.ToString()));
-            insertData.Add(new KeyValuePair<string, string>("job_ID", obj.Job.JobID.ToString()));
-            insertData.Add(new KeyValuePair<string, string>("score", obj.Score.ToString()));
-            insertData.Add(new KeyValuePair<string, string>("date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
+            if (matches.Length == 0)
+            {
+                var insertData = new List<KeyValuePair<String, String>>();
+                insertData.Add(new KeyValuePair<string, string>("cv_ID", obj.Cv.CvID.ToString()));
+                insertData.Add(new KeyValuePair<string, string>("job_ID", obj.Job.JobID.ToString()));
+                insertData.Add(new KeyValuePair<string, string>("score", obj.Score.ToString()));
+                insertData.Add(new KeyValuePair<string, string>("date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
 
-            _dbHandler.Insert("Matches", insertData);
+                _dbHandler.Insert("Matches", insertData);
+            }
 
             return 0; /*Een match kan nooit 1 insertID terug returnen. 
                       Tabel bestaat uit een gecombineerde PK sleutel*/
@@ -63,7 +66,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Match ResultToObject(DataRow data)
+        public override Match ResultToObject(DataRow data)
         {
             var match = new Match();
             var jobProcess = new JobProcess();

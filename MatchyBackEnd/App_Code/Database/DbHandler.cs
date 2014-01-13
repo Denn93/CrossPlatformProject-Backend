@@ -41,6 +41,8 @@ namespace Database
             }
         }
 
+        #region DataBase Actions
+
         private void MakeConnection()
         {
             try
@@ -75,13 +77,17 @@ namespace Database
             }
         }
 
+        #endregion
+
+        #region QueryBuilder Methods
+
         /// <summary>
         /// Deze methode kan voor de 2 verschillende strings zorgen. Namelijk een Select string en een parameter String 
         /// </summary>
         /// <param name="insert">De data die gebruikt moet worden</param>
         /// <param name="isSelect">Wanneer True maakt de methode een select String. Bijv veld 1, veld2, veld3 etc. Anders wordt het een parameter String. Bijv @veld1, @veld2 etc.</param>
         /// <returns>Returns result String</returns>
-        private String createStringsForInsert(List<KeyValuePair<String, String>> insert, Boolean isSelect)
+        private String CreateStringsForInsert(List<KeyValuePair<String, String>> insert, Boolean isSelect)
         {
             String result = "";
 
@@ -110,13 +116,13 @@ namespace Database
         /// </summary>
         /// <param name="where">Alle waardes die in de where verwerkt moeten worden. Bijvoorbeeld dus veld = waarde </param>
         /// <returns>De volledige query String</returns>
-        private String createWhereString(List<KeyValuePair<String , String>> where, KeyValuePair<String, String> whereOperator)
+        private String CreateWhereString(List<KeyValuePair<String , String>> where, KeyValuePair<String, String> whereOperator)
         {
             String result = "Where ";
 
             foreach (var pair in where)
             {
-                var sqloperator = whereOperator.Value;
+                var sqloperator = "=";
 
                 if (whereOperator.Key.Equals(pair.Key))
                     sqloperator = whereOperator.Value;
@@ -132,6 +138,10 @@ namespace Database
             return result;
         }
 
+        #endregion
+
+        #region Database Statements Select/Insert/Delete/Update
+
         public DataTable Select(List<String> select, String tableName, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<string, string>(), String other = "")
         {
             var result = new DataTable();
@@ -143,7 +153,7 @@ namespace Database
                 whereOperator = new KeyValuePair<string, string>("default", "=");
 
             if (where != null)
-                whereString = createWhereString(where, whereOperator);
+                whereString = CreateWhereString(where, whereOperator);
 
             try
             {
@@ -160,6 +170,32 @@ namespace Database
             catch (MySqlException e)
             {
                 _log.Error("There was a error executing the query: " + e.Message);
+                Console.WriteLine("Executed query: " + dbCom.CommandText);
+            }
+
+            return result;
+        }
+
+        public DataTable RawSelectQuery(String query)
+        {
+            var result = new DataTable();
+            var dbCom = _connection.CreateCommand();
+
+            try
+            {
+                dbCom.CommandText = query;
+
+                MySqlDataReader dbReader = dbCom.ExecuteReader();
+                DataSet ds = new DataSet();
+                ds.Tables.Add(result);
+                ds.EnforceConstraints = false;
+                result.Load(dbReader);
+                dbReader.Close();
+            }
+            catch (MySqlException e )
+            {
+                _log.Error("There was a error executing the query: " + e.Message);
+                Console.WriteLine("Executed query: " + dbCom.CommandText);
             }
 
             return result;
@@ -169,8 +205,8 @@ namespace Database
         {
             var resultId = 0;
 
-            string selectString = createStringsForInsert(data, true);
-            string valueString = createStringsForInsert(data, false);
+            string selectString = CreateStringsForInsert(data, true);
+            string valueString = CreateStringsForInsert(data, false);
 
             try
             {
@@ -208,6 +244,10 @@ namespace Database
 
             return resultId;
         }
+
+
+
+        #endregion
     }
 }
 

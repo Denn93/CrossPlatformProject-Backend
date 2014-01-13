@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-<<<<<<< HEAD
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:56487/MatchyBackEnd/MatchyService.asmx?wsdl" filename="MatchyService.wsdl" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:56487/MatchyBackEnd/MatchyService.asmx?disco" filename="MatchyService.disco" />
-=======
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:58352/MatchyBackEnd/MatchyService.asmx?wsdl" filename="MatchyService.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:58352/MatchyBackEnd/MatchyService.asmx?disco" filename="MatchyService.disco" />
->>>>>>> 242a162a674216752c3df12ff8608b74cfce8af7
   </Results>
 </DiscoveryClientResultsFile>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Web.Services;
 using DataAccessObjects;
 using Database;
+using Features;
 using Processes;
 
 /// <summary>
@@ -15,34 +16,6 @@ using Processes;
 // [System.Web.Script.Services.ScriptService]
 public class MatchyService : System.Web.Services.WebService
 {
-
-    //Check if user exists and the password is correct
-    //both true returns 1
-    //both or either one false returns 0
-    [WebMethod]
-    public int Login(string email, string pass)
-    {
-
-//        DataTable result = new DataTable();
-//
-//        DbHandler db = new DbHandler();
-//        string[] select = new string[3] { "email, password", "Profile", "where email='" + email + "'" };
-//        result = db.Select(select);
-//
-//        try
-//        {
-//            if (result.Rows[0]["password"].ToString().Equals(pass))
-//            {
-//                return 1;
-//            }
-//        }
-//        catch (Exception e)
-//        { }
-//
-     return 0;
-        // TODO Dennis This is A Old Login method. Can be deleted I guess
-    }
-
     //Adds new user to database after checking if it exsists
     [WebMethod]
     public int AddUser(User user)
@@ -106,16 +79,6 @@ public class MatchyService : System.Web.Services.WebService
     {
         return new CvProcess().Add(cv);
     }
-
-//    [WebMethod]
-//    public List<int> AddCvs(List<Cv> cvs)
-//    {
-//        var ids = new List<int>();
-//        foreach (var cv in cvs)
-//            ids.Add(new CvProcess().Add(cv));
-//
-//        return ids;
-//    }
 
     [WebMethod]
     public Cv[] GetCv(int id)
@@ -265,14 +228,20 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Job[] SearchByEmployee(SearchCompany searchCompany)
+    public Job[] SearchByEmployee(Search search)
     {
-        return null;
+        return new Searching(search).SearchByCv();
     }
     
     [WebMethod]
-    public Cv[] searchByCompany(SearchCv searchCv)
+    public Cv[] SearchByCompany(Search search)
     {
-        return null;
+        return new Searching(search).SearchByJob();
+    }
+
+    [WebMethod]
+    public void GetBranche(int id)
+    {
+        new BrancheProcess().InsertFromFile();
     }
 }

@@ -66,7 +66,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Source ResultToObject(DataRow data)
+        public override Source ResultToObject(DataRow data)
         {
             var source = new Source();
 

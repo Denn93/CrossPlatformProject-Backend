@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerBatch", "Crawlers\CrawlerBatch.csproj", "{E4B6CCED-60C7-4773-A660-B533C8D8EE39}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessObjects", "..\..\..\..\..\..\..\..\Project 5_6 GTA\Server Bestanden\DataAccessObjects\DataAccessObjects.csproj", "{DD18D715-712C-4786-B14F-3BF7AA307F5B}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MatchyBackEnd", "..\MatchyBackEnd\", "{A30781BD-CE46-4C09-9CB4-ADE2BB52C630}"
@@ -26,16 +24,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MatchyBackEnd", "..\MatchyB
 		VWDPort = "56487"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerBatch", "Crawlers\CrawlerBatch.csproj", "{E4B6CCED-60C7-4773-A660-B533C8D8EE39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD18D715-712C-4786-B14F-3BF7AA307F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD18D715-712C-4786-B14F-3BF7AA307F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD18D715-712C-4786-B14F-3BF7AA307F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,6 +40,10 @@ Global
 		{A30781BD-CE46-4C09-9CB4-ADE2BB52C630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30781BD-CE46-4C09-9CB4-ADE2BB52C630}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{A30781BD-CE46-4C09-9CB4-ADE2BB52C630}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B6CCED-60C7-4773-A660-B533C8D8EE39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

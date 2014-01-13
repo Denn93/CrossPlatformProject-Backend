@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CrawlerBatch.Crawlers;
 using CrawlerBatch.Mappers;
 using DataAccessObjects;
@@ -40,11 +41,11 @@ namespace CrawlerBatch
                 _aCrawlerCVs.Add(cvCrawler.Cvs);
             }
 
-            foreach (var vacCrawler in _vacCrawlers)
-            {
-                vacCrawler.Template();
-                _aCrawlerJobs.Add(vacCrawler.Jobs);
-            }
+//            foreach (var vacCrawler in _vacCrawlers)
+//            {
+//                vacCrawler.Template();
+//                _aCrawlerJobs.Add(vacCrawler.Jobs);
+//            }
         }
 
         /// <summary>
@@ -52,12 +53,12 @@ namespace CrawlerBatch
         /// </summary>
         public void SubmitData()
         {
-            foreach (var crawlerJobs in _aCrawlerJobs)
-                foreach (var job in crawlerJobs)
-                {
-                    var mapper = new JobMapper();
-                    mapper.Insert(job);
-                }
+//            foreach (var crawlerJobs in _aCrawlerJobs)
+//                foreach (var job in crawlerJobs)
+//                {
+//                    var mapper = new JobMapper();
+//                    mapper.Insert(job);
+//                }
 
             foreach(var crawlerCvs in _aCrawlerCVs)
                 foreach (var cv in crawlerCvs)
@@ -66,7 +67,9 @@ namespace CrawlerBatch
                     mapper.Insert(cv);
                 }
 
+            Console.WriteLine("Done Crawling");
             Console.ReadKey();
+            
         }
     }
 }
