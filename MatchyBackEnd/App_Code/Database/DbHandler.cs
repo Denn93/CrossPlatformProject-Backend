@@ -116,7 +116,7 @@ namespace Database
 
             foreach (var pair in where)
             {
-                var sqloperator = whereOperator.Value;
+                var sqloperator = "="; 
 
                 if (whereOperator.Key.Equals(pair.Key))
                     sqloperator = whereOperator.Value;

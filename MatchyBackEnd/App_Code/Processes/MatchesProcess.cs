@@ -71,7 +71,10 @@ namespace Processes
 
             match.Cv = cvProcess.Get(Convert.ToInt32(data["cv_ID"].ToString()))[0];
             match.Job = jobProcess.Get(Convert.ToInt32(data["job_ID"].ToString()))[0];
-            match.Score = Convert.ToInt32(data["score"].ToString());
+
+            long score;
+            long.TryParse(data["score"].ToString(), out score);
+            match.Score = score;
             match.Date = data["date"].ToString();
 
             return match;

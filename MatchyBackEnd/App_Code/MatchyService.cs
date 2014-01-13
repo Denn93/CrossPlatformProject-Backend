@@ -152,11 +152,11 @@ public class MatchyService : System.Web.Services.WebService
     {
         var where = new List<KeyValuePair<string, string>>();
         where.Add(new KeyValuePair<string, string>("cv_ID", cv_id.ToString()));
-        where.Add(new KeyValuePair<string, string>("score", "3"));
+        where.Add(new KeyValuePair<string, string>("score", "1"));
 
         var sqlOperator = new KeyValuePair<String, String>("score", ">");
 
-        return new MatchesProcess().Get(0, where, sqlOperator, "ORDER BY date Limit " + limit);
+        return new MatchesProcess().Get(0, where, sqlOperator, "ORDER BY score DESC, date Limit " + limit);
     }
 
     [WebMethod]
@@ -169,8 +169,12 @@ public class MatchyService : System.Web.Services.WebService
        
         var whereJobID = new List<KeyValuePair<string, string>>();
         whereJobID.Add(new KeyValuePair<string, string>("job_ID", jobID.ToString()));
+        whereJobID.Add(new KeyValuePair<string, string>("score", "1"));
 
-        return new MatchesProcess().Get(0, whereJobID, new KeyValuePair<string, string>(), "ORDER BY date LIMIT " + limit);
+        var sqlOperator = new KeyValuePair<String, String>("score", ">");
+
+
+        return new MatchesProcess().Get(0, whereJobID, sqlOperator, "ORDER BY score DESC, date LIMIT " + limit);
     }
 
     [WebMethod]
@@ -265,13 +269,13 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Job[] SearchByEmployee(SearchCompany searchCompany)
+    public Job[] SearchByEmployee(Search searchCompany)
     {
         return null;
     }
     
     [WebMethod]
-    public Cv[] searchByCompany(SearchCv searchCv)
+    public Cv[] searchByCompany(Search searchCv)
     {
         return null;
     }
