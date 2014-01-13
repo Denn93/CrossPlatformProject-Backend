@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using DataAccessObjects;
 using Database;
+using Features;
 
 
 namespace Processes
@@ -12,7 +13,7 @@ namespace Processes
     /// </summary>
     public class BrancheProcess : AProcess<Branche>
     {
-        private readonly List<String> _defaultSelect = new List<string> { "brancheID", "crawlerID", "companyID", "source_ID", "education_ID", "title", "description", "place_date", "employment" };
+        private readonly List<String> _defaultSelect = new List<string> { "branche_ID", "description"};
 
         public override Branche[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
         {
@@ -39,24 +40,79 @@ namespace Processes
             return brancheList;
         }
 
-        public override int Add(Branche obj)
+        public override int Add(Branche branche)
+        {
+            var resultId = 0;
+
+            _dbHandler = DbHandler.Instance;
+
+            var where = new List<KeyValuePair<String, String>>();
+            where.Add(new KeyValuePair<string, string>("description", branche.Description));
+            var branches = Get(0, where);
+
+            var insertData = new List<KeyValuePair<String, String>>();
+            insertData.Add(new KeyValuePair<string, string>("description", branche.Description));
+
+            resultId = branches.Length == 0 ? _dbHandler.Insert("Branche", insertData) : branches[0].branche_ID;
+
+            return resultId;
+        }
+
+        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
         {
             throw new System.NotImplementedException();
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> @where = null)
+        public override int Update(Branche branche)
         {
             throw new System.NotImplementedException();
         }
 
-        public override int Update(Branche obj)
+        public override Branche ResultToObject(DataRow data)
         {
-            throw new System.NotImplementedException();
+            var branche = new Branche();
+
+            branche.branche_ID = Convert.ToInt32(data["branche_ID"].ToString());
+            branche.Description = data["description"].ToString();
+
+            return branche;
         }
 
-        protected override Branche ResultToObject(DataRow data)
+        public void InsertFromFile()
         {
-            throw new System.NotImplementedException();
+            String[] branches = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "brancheList.txt");
+
+            foreach (var branch in branches)
+                Add(new Branche() {Description = branch});
+        }
+
+        public List<int> DetermineBranche(int id, String objectType)
+        {
+            _dbHandler = DbHandler.Instance;
+            var results = new List<int>();
+
+            foreach(var branche in Get())
+            {
+                String where = "WHERE ";
+
+                where += (objectType.Equals("Job"))
+                                   ? String.Format(Searching.BaseWhereLikeJob, String.Format("\"%{0}%\"", branche.Description))
+                                   : String.Format(Searching.BaseWhereLikeCv, String.Format("\"%{0}%\"", branche.Description));
+
+                String query = (objectType.Equals("Job"))
+                                   ? String.Format("Select * FROM Jobs j {0} {1} AND j.job_ID = {2} ",
+                                                   Searching.BaseInnerJoinsJob, where, id)
+                                   : String.Format("Select * FROM Cv c {0} {1} AND c.cv_ID = {2} ",
+                                                   Searching.BaseInnerJoinsCv, where, id);
+
+                DataTable result = new DataTable();
+                result = _dbHandler.RawSelectQuery(query);
+
+                if (result.Rows.Count != 0)
+                    results.Add(branche.branche_ID);
+            }
+
+            return results;
         }
     }
 }

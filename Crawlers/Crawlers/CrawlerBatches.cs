@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CrawlerBatch.Crawlers;
 using CrawlerBatch.Mappers;
 using DataAccessObjects;
@@ -66,7 +67,9 @@ namespace CrawlerBatch
                     mapper.Insert(cv);
                 }
 
+            Console.WriteLine("Done Crawling");
             Console.ReadKey();
+            
         }
     }
 }

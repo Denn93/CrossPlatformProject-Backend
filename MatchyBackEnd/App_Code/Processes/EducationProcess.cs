@@ -66,7 +66,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Education ResultToObject(DataRow data)
+        public override Education ResultToObject(DataRow data)
         {
             var education = new Education();
 

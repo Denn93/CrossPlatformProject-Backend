@@ -70,7 +70,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override DetailJob ResultToObject(DataRow data)
+        public override DetailJob ResultToObject(DataRow data)
         {
             var detailJob = new DetailJob();
 

@@ -26,14 +26,10 @@ namespace CrawlerBatch.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:56487/MatchyBackEnd/MatchyService.asmx")]
-=======
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:58352/MatchyBackEnd/MatchyService.asmx")]
->>>>>>> 242a162a674216752c3df12ff8608b74cfce8af7
-        public string CrawlerBatch_MatchyBackEnd_MatchyService {
+        public string CrawlerBatch_MatchyBackend_MatchyService {
             get {
-                return ((string)(this["CrawlerBatch_MatchyBackEnd_MatchyService"]));
+                return ((string)(this["CrawlerBatch_MatchyBackend_MatchyService"]));
             }
         }
     }

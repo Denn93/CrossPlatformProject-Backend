@@ -69,6 +69,8 @@ namespace Processes
             insertData.Add(new KeyValuePair<string, string>("sex", obj.Sex));
 
             resultId = cvs.Length == 0 ? _dbHandler.Insert("Cv", insertData) : cvs[0].CvID;
+            
+            AddBranches(resultId);
 
             return resultId;
         }
@@ -83,7 +85,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Cv ResultToObject(DataRow data)
+        public override Cv ResultToObject(DataRow data)
         {
             var result = new Cv();
             var educationProcess = new EducationProcess();
@@ -111,6 +113,17 @@ namespace Processes
             result.Sex = data["sex"].ToString();
 
             return result;
+        }
+
+        private void AddBranches(int cv_Id)
+        {
+            var branches = new BrancheProcess().DetermineBranche(cv_Id, "Cv");
+
+            foreach (var branch in branches)
+            {
+                var brancheJob = new BrancheCv { branche_ID = branch, cv_ID = cv_Id };
+                new BrancheCvProcess().Add(brancheJob);
+            }
         }
     }
 }

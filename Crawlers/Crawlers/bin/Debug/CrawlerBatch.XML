@@ -450,15 +450,6 @@
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.#ctor">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.Login(System.String,System.String)">
-            <remarks/>
-        </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.LoginAsync(System.String,System.String)">
-            <remarks/>
-        </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.LoginAsync(System.String,System.String,System.Object)">
-            <remarks/>
-        </member>
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddUser(CrawlerBatch.MatchyBackEnd.User)">
             <remarks/>
         </member>
@@ -511,6 +502,15 @@
             <remarks/>
         </member>
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobByCompany(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobByCompanyAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobByCompanyAsync(System.Int32,System.Object)">
             <remarks/>
         </member>
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJob(CrawlerBatch.MatchyBackEnd.Job)">
@@ -576,13 +576,31 @@
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.AddMatchAsync(CrawlerBatch.MatchyBackEnd.Match,System.Object)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatch(CrawlerBatch.MatchyBackEnd.Match)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatch(System.Int32)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(CrawlerBatch.MatchyBackEnd.Match)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(System.Int32)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(CrawlerBatch.MatchyBackEnd.Match,System.Object)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchAsync(System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCv(System.Int32,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCvAsync(System.Int32,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCvAsync(System.Int32,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCompany(System.Int32,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCompanyAsync(System.Int32,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCompanyAsync(System.Int32,System.Int32,System.Object)">
             <remarks/>
         </member>
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetEdu(System.Int32)">
@@ -720,28 +738,34 @@
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetDetailJobAsync(System.Int32,System.Object)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployee(CrawlerBatch.MatchyBackEnd.SearchCompany)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployee(CrawlerBatch.MatchyBackEnd.Search)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.SearchCompany)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.Search)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.SearchCompany,System.Object)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeAsync(CrawlerBatch.MatchyBackEnd.Search,System.Object)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompany(CrawlerBatch.MatchyBackEnd.SearchCv)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByCompany(CrawlerBatch.MatchyBackEnd.Search)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyAsync(CrawlerBatch.MatchyBackEnd.SearchCv)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByCompanyAsync(CrawlerBatch.MatchyBackEnd.Search)">
             <remarks/>
         </member>
-        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyAsync(CrawlerBatch.MatchyBackEnd.SearchCv,System.Object)">
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByCompanyAsync(CrawlerBatch.MatchyBackEnd.Search,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetBranche(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetBrancheAsync(System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.GetBrancheAsync(System.Int32,System.Object)">
             <remarks/>
         </member>
         <member name="M:CrawlerBatch.MatchyBackEnd.MatchyService.CancelAsync(System.Object)">
-            <remarks/>
-        </member>
-        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.LoginCompleted">
             <remarks/>
         </member>
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.AddUserCompleted">
@@ -760,6 +784,9 @@
             <remarks/>
         </member>
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetJobByCompanyCompleted">
             <remarks/>
         </member>
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.UpdateJobCompleted">
@@ -784,6 +811,12 @@
             <remarks/>
         </member>
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCvCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetMatchByCompanyCompleted">
             <remarks/>
         </member>
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetEduCompleted">
@@ -834,7 +867,10 @@
         <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByEmployeeCompleted">
             <remarks/>
         </member>
-        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.searchByCompanyCompleted">
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.SearchByCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CrawlerBatch.MatchyBackEnd.MatchyService.GetBrancheCompleted">
             <remarks/>
         </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.User">
@@ -933,46 +969,31 @@
         <member name="P:CrawlerBatch.MatchyBackEnd.Education.Name">
             <remarks/>
         </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.SearchCv">
+        <member name="T:CrawlerBatch.MatchyBackEnd.Branche">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Description">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Branche.branche_ID">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Education">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Branche.Description">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Branche">
+        <member name="T:CrawlerBatch.MatchyBackEnd.Search">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.City">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Search.SearchTerm">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Name">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Search.Education">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCv.Type">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Search.City">
             <remarks/>
         </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.SearchCompany">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Search.Hours">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Description">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Education">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Branche">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.City">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Name">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.SearchCompany.Type">
+        <member name="P:CrawlerBatch.MatchyBackEnd.Search.Branche">
             <remarks/>
         </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.Match">
@@ -985,6 +1006,9 @@
             <remarks/>
         </member>
         <member name="P:CrawlerBatch.MatchyBackEnd.Match.Score">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.Match.Date">
             <remarks/>
         </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.Job">
@@ -1065,15 +1089,6 @@
         <member name="P:CrawlerBatch.MatchyBackEnd.DetailJob.Data">
             <remarks/>
         </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.LoginCompletedEventHandler">
-            <remarks/>
-        </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.LoginCompletedEventArgs">
-            <remarks/>
-        </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.LoginCompletedEventArgs.Result">
-            <remarks/>
-        </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.AddUserCompletedEventHandler">
             <remarks/>
         </member>
@@ -1126,6 +1141,15 @@
             <remarks/>
         </member>
         <member name="P:CrawlerBatch.MatchyBackEnd.GetJobCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetJobByCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetJobByCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetJobByCompanyCompletedEventArgs.Result">
             <remarks/>
         </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.UpdateJobCompletedEventHandler">
@@ -1198,6 +1222,24 @@
             <remarks/>
         </member>
         <member name="P:CrawlerBatch.MatchyBackEnd.GetMatchCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchByCvCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchByCvCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetMatchByCvCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchByCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetMatchByCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CrawlerBatch.MatchyBackEnd.GetMatchByCompanyCompletedEventArgs.Result">
             <remarks/>
         </member>
         <member name="T:CrawlerBatch.MatchyBackEnd.GetEduCompletedEventHandler">
@@ -1344,13 +1386,16 @@
         <member name="P:CrawlerBatch.MatchyBackEnd.SearchByEmployeeCompletedEventArgs.Result">
             <remarks/>
         </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventHandler">
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchByCompanyCompletedEventHandler">
             <remarks/>
         </member>
-        <member name="T:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventArgs">
+        <member name="T:CrawlerBatch.MatchyBackEnd.SearchByCompanyCompletedEventArgs">
             <remarks/>
         </member>
-        <member name="P:CrawlerBatch.MatchyBackEnd.searchByCompanyCompletedEventArgs.Result">
+        <member name="P:CrawlerBatch.MatchyBackEnd.SearchByCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CrawlerBatch.MatchyBackEnd.GetBrancheCompletedEventHandler">
             <remarks/>
         </member>
     </members>

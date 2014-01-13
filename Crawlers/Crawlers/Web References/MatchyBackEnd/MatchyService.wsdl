@@ -2,21 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://145.24.222.183/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://145.24.222.183/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://145.24.222.183/">
-      <s:element name="Login">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoginResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="AddUser">
         <s:complexType>
           <s:sequence>
@@ -190,6 +175,20 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="tns:Job" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetJobByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetJobByCompanyResult" type="tns:ArrayOfJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="UpdateJob">
         <s:complexType>
           <s:sequence>
@@ -290,7 +289,8 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Cv" type="tns:Cv" />
           <s:element minOccurs="0" maxOccurs="1" name="Job" type="tns:Job" />
-          <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="AddMatchResponse">
@@ -303,7 +303,7 @@
       <s:element name="GetMatch">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="match" type="tns:Match" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -319,6 +319,36 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Match" nillable="true" type="tns:Match" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetMatchByCv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cv_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchByCvResult" type="tns:ArrayOfMatch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatchByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatchByCompanyResult" type="tns:ArrayOfMatch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetEdu">
         <s:complexType>
           <s:sequence>
@@ -552,18 +582,23 @@
       <s:element name="SearchByEmployee">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="searchCompany" type="tns:SearchCompany" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="tns:Search" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="SearchCompany">
+      <s:complexType name="Search">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchTerm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="tns:Education" />
           <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="tns:Branche" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Branche">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="branche_ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="SearchByEmployeeResponse">
@@ -573,38 +608,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="searchByCompany">
+      <s:element name="SearchByCompany">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="searchCv" type="tns:SearchCv" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="tns:Search" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="SearchCv">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Branche" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="searchByCompanyResponse">
+      <s:element name="SearchByCompanyResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="searchByCompanyResult" type="tns:ArrayOfCV" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByCompanyResult" type="tns:ArrayOfCV" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="GetBranche">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBrancheResponse">
+        <s:complexType />
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="LoginSoapIn">
-    <wsdl:part name="parameters" element="tns:Login" />
-  </wsdl:message>
-  <wsdl:message name="LoginSoapOut">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
-  </wsdl:message>
   <wsdl:message name="AddUserSoapIn">
     <wsdl:part name="parameters" element="tns:AddUser" />
   </wsdl:message>
@@ -640,6 +669,12 @@
   </wsdl:message>
   <wsdl:message name="GetJobSoapOut">
     <wsdl:part name="parameters" element="tns:GetJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetJobByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobByCompanyResponse" />
   </wsdl:message>
   <wsdl:message name="UpdateJobSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateJob" />
@@ -688,6 +723,18 @@
   </wsdl:message>
   <wsdl:message name="GetMatchSoapOut">
     <wsdl:part name="parameters" element="tns:GetMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCvSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatchByCv" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCvSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchByCvResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatchByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatchByCompanyResponse" />
   </wsdl:message>
   <wsdl:message name="GetEduSoapIn">
     <wsdl:part name="parameters" element="tns:GetEdu" />
@@ -785,17 +832,19 @@
   <wsdl:message name="SearchByEmployeeSoapOut">
     <wsdl:part name="parameters" element="tns:SearchByEmployeeResponse" />
   </wsdl:message>
-  <wsdl:message name="searchByCompanySoapIn">
-    <wsdl:part name="parameters" element="tns:searchByCompany" />
+  <wsdl:message name="SearchByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByCompany" />
   </wsdl:message>
-  <wsdl:message name="searchByCompanySoapOut">
-    <wsdl:part name="parameters" element="tns:searchByCompanyResponse" />
+  <wsdl:message name="SearchByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBrancheSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBranche" />
+  </wsdl:message>
+  <wsdl:message name="GetBrancheSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBrancheResponse" />
   </wsdl:message>
   <wsdl:portType name="MatchyServiceSoap">
-    <wsdl:operation name="Login">
-      <wsdl:input message="tns:LoginSoapIn" />
-      <wsdl:output message="tns:LoginSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <wsdl:input message="tns:AddUserSoapIn" />
       <wsdl:output message="tns:AddUserSoapOut" />
@@ -819,6 +868,10 @@
     <wsdl:operation name="GetJob">
       <wsdl:input message="tns:GetJobSoapIn" />
       <wsdl:output message="tns:GetJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <wsdl:input message="tns:GetJobByCompanySoapIn" />
+      <wsdl:output message="tns:GetJobByCompanySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateJob">
       <wsdl:input message="tns:UpdateJobSoapIn" />
@@ -851,6 +904,14 @@
     <wsdl:operation name="GetMatch">
       <wsdl:input message="tns:GetMatchSoapIn" />
       <wsdl:output message="tns:GetMatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <wsdl:input message="tns:GetMatchByCvSoapIn" />
+      <wsdl:output message="tns:GetMatchByCvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <wsdl:input message="tns:GetMatchByCompanySoapIn" />
+      <wsdl:output message="tns:GetMatchByCompanySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetEdu">
       <wsdl:input message="tns:GetEduSoapIn" />
@@ -916,22 +977,17 @@
       <wsdl:input message="tns:SearchByEmployeeSoapIn" />
       <wsdl:output message="tns:SearchByEmployeeSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="searchByCompany">
-      <wsdl:input message="tns:searchByCompanySoapIn" />
-      <wsdl:output message="tns:searchByCompanySoapOut" />
+    <wsdl:operation name="SearchByCompany">
+      <wsdl:input message="tns:SearchByCompanySoapIn" />
+      <wsdl:output message="tns:SearchByCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBranche">
+      <wsdl:input message="tns:GetBrancheSoapIn" />
+      <wsdl:output message="tns:GetBrancheSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MatchyServiceSoap" type="tns:MatchyServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Login">
-      <soap:operation soapAction="http://145.24.222.183/Login" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap:operation soapAction="http://145.24.222.183/AddUser" style="document" />
       <wsdl:input>
@@ -979,6 +1035,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetJob">
       <soap:operation soapAction="http://145.24.222.183/GetJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <soap:operation soapAction="http://145.24.222.183/GetJobByCompany" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1051,6 +1116,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetMatch">
       <soap:operation soapAction="http://145.24.222.183/GetMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <soap:operation soapAction="http://145.24.222.183/GetMatchByCv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <soap:operation soapAction="http://145.24.222.183/GetMatchByCompany" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1202,8 +1285,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="searchByCompany">
-      <soap:operation soapAction="http://145.24.222.183/searchByCompany" style="document" />
+    <wsdl:operation name="SearchByCompany">
+      <soap:operation soapAction="http://145.24.222.183/SearchByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranche">
+      <soap:operation soapAction="http://145.24.222.183/GetBranche" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1214,15 +1306,6 @@
   </wsdl:binding>
   <wsdl:binding name="MatchyServiceSoap12" type="tns:MatchyServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Login">
-      <soap12:operation soapAction="http://145.24.222.183/Login" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap12:operation soapAction="http://145.24.222.183/AddUser" style="document" />
       <wsdl:input>
@@ -1270,6 +1353,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetJob">
       <soap12:operation soapAction="http://145.24.222.183/GetJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/GetJobByCompany" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1342,6 +1434,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetMatch">
       <soap12:operation soapAction="http://145.24.222.183/GetMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCv">
+      <soap12:operation soapAction="http://145.24.222.183/GetMatchByCv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/GetMatchByCompany" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1493,8 +1603,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="searchByCompany">
-      <soap12:operation soapAction="http://145.24.222.183/searchByCompany" style="document" />
+    <wsdl:operation name="SearchByCompany">
+      <soap12:operation soapAction="http://145.24.222.183/SearchByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranche">
+      <soap12:operation soapAction="http://145.24.222.183/GetBranche" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1505,17 +1624,10 @@
   </wsdl:binding>
   <wsdl:service name="MatchyService">
     <wsdl:port name="MatchyServiceSoap" binding="tns:MatchyServiceSoap">
-<<<<<<< HEAD
-      <soap:address location="http://localhost:56487/MatchyBackEnd/MatchyService.asmx" />
-    </wsdl:port>
-    <wsdl:port name="MatchyServiceSoap12" binding="tns:MatchyServiceSoap12">
-      <soap12:address location="http://localhost:56487/MatchyBackEnd/MatchyService.asmx" />
-=======
       <soap:address location="http://localhost:58352/MatchyBackEnd/MatchyService.asmx" />
     </wsdl:port>
     <wsdl:port name="MatchyServiceSoap12" binding="tns:MatchyServiceSoap12">
       <soap12:address location="http://localhost:58352/MatchyBackEnd/MatchyService.asmx" />
->>>>>>> 242a162a674216752c3df12ff8608b74cfce8af7
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

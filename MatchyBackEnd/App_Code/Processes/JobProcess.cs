@@ -52,7 +52,6 @@ namespace Processes
             var companyProcess = new CompanyProcess();
             int companyId = companyProcess.Add(obj.Company);
 
-         
             var insertData = new List<KeyValuePair<String, String>>();
             insertData.Add(new KeyValuePair<string, string>("crawlerID", obj.CrawlerID.ToString()));
             insertData.Add(new KeyValuePair<string, string>("companyID", companyId.ToString()));
@@ -64,6 +63,8 @@ namespace Processes
             insertData.Add(new KeyValuePair<string, string>("employment", obj.JobHours));
 
             resultId = jobs.Length == 0 ? _dbHandler.Insert("jobs", insertData) : jobs[0].JobID;
+
+            AddBranches(resultId);
 
             obj.DetailJob.JobId = resultId;
             var detailJobProcess = new DetailJobProcess();
@@ -82,7 +83,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Job ResultToObject(DataRow data)
+        public override Job ResultToObject(DataRow data)
         {
             var result = new Job();
             var educationProcess = new EducationProcess();
@@ -106,6 +107,17 @@ namespace Processes
             result.DetailJob = (detailJobProcess.Get(0, whereDetail).Length == 0) ? new DetailJob() : detailJobProcess.Get(0, whereDetail)[0];
 
             return result;
+        }
+
+        private void AddBranches(int job_Id)
+        {
+            var branches = new BrancheProcess().DetermineBranche(job_Id, "Job");
+
+            foreach (var branch in branches)
+            {
+                var brancheJob = new BrancheJob {branche_ID = branch, job_ID = job_Id};
+                new BrancheJobProcess().Add(brancheJob);
+            }
         }
     }
 }

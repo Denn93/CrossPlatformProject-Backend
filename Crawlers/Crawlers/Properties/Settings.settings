@@ -2,12 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CrawlerBatch.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="CrawlerBatch_MatchyBackEnd_MatchyService" Type="(Web Service URL)" Scope="Application">
-<<<<<<< HEAD
-      <Value Profile="(Default)">http://localhost:56487/MatchyBackEnd/MatchyService.asmx</Value>
-=======
+    <Setting Name="CrawlerBatch_MatchyBackend_MatchyService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:58352/MatchyBackEnd/MatchyService.asmx</Value>
->>>>>>> 242a162a674216752c3df12ff8608b74cfce8af7
     </Setting>
   </Settings>
 </SettingsFile>

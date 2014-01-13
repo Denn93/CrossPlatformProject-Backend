@@ -20,6 +20,6 @@ namespace Processes
         public abstract int Delete(int id, List<KeyValuePair<String, String>> where = null);
         public abstract int Update(TDataAccessObject obj);
 
-        protected abstract TDataAccessObject ResultToObject(DataRow data);
+        public abstract TDataAccessObject ResultToObject(DataRow data);
     }
 }

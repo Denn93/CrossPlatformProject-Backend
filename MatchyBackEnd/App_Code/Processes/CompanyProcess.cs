@@ -75,7 +75,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override Company ResultToObject(DataRow data)
+        public override Company ResultToObject(DataRow data)
         {
             var company = new Company();
 

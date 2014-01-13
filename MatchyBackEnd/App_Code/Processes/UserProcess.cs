@@ -57,7 +57,7 @@ namespace Processes
             throw new NotImplementedException();
         }
 
-        protected override User ResultToObject(DataRow data)
+        public override User ResultToObject(DataRow data)
         {
             var user = new User();
 
