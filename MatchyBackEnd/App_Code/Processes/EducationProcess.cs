@@ -56,16 +56,6 @@ namespace Processes
             return resultId;
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> @where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Education obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override Education ResultToObject(DataRow data)
         {
             var education = new Education();

@@ -56,16 +56,6 @@ namespace Processes
                       Tabel bestaat uit een gecombineerde PK sleutel*/
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Match obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override Match ResultToObject(DataRow data)
         {
             var match = new Match();
@@ -74,10 +64,7 @@ namespace Processes
 
             match.Cv = cvProcess.Get(Convert.ToInt32(data["cv_ID"].ToString()))[0];
             match.Job = jobProcess.Get(Convert.ToInt32(data["job_ID"].ToString()))[0];
-
-            long score;
-            long.TryParse(data["score"].ToString(), out score);
-            match.Score = score;
+            match.Score = data["score"].ToString();
             match.Date = data["date"].ToString();
 
             return match;

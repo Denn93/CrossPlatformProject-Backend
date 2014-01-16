@@ -58,16 +58,6 @@ namespace Processes
             return resultId;
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override int Update(Branche branche)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override Branche ResultToObject(DataRow data)
         {
             var branche = new Branche();

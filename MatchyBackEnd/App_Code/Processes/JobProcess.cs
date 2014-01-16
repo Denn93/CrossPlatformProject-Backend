@@ -73,16 +73,6 @@ namespace Processes
             return resultId;
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> @where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Job obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override Job ResultToObject(DataRow data)
         {
             var result = new Job();

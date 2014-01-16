@@ -40,21 +40,43 @@ namespace Processes
 
             //TODO Dennis Yet To be determined when Cv en Company Are inserted
 
-            return resultId;
-        }
+            //string[] select = new string[3] { "email", "Profile", "where email='" + user.Email + "'" };
+            var where = new List<KeyValuePair<String, String>>();
+            where.Add(new KeyValuePair<string, string>("email", obj.Email));
+            var result = Get(0, where);
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
-        {
-            //TODO Dennis User deletion to be added
+            if (result.Length >= 1)
+                return 2; // User already exists
 
-            throw new NotImplementedException();
-        }
+            if (obj.UserCv != null)
+            {
+                int cvId = new CvProcess().Add(obj.UserCv);
+                obj.UserCv.CvID = cvId;
+            }
 
-        public override int Update(User obj)
-        {
-            //TODO Dennis User Update yet to be added
+            if (obj.UserCompany != null)
+            {
+                int companyId = new CompanyProcess().Add(obj.UserCompany);
+                obj.UserCompany.CompanyID = companyId;
+            }
 
-            throw new NotImplementedException();
+            var insertData = new List<KeyValuePair<String, String>>();
+                
+            if (obj.UserCv.CvID == 0)
+                insertData.Add(new KeyValuePair<string, string>("company_ID", obj.UserCompany.CompanyID.ToString()));
+            else
+                insertData.Add(new KeyValuePair<string, string>("cv_ID", obj.UserCv.CvID.ToString()));
+                
+            insertData.Add(new KeyValuePair<string, string>("password", obj.Pass));
+            insertData.Add(new KeyValuePair<string, string>("email", obj.Email));
+            insertData.Add(new KeyValuePair<string, string>("date", obj.BirthDay));
+
+            var insertedId = _dbHandler.Insert("Profile", insertData);
+
+            if (insertedId > 0)
+                return 1; // User Successfully added
+
+            return 0; // Error inserting user
         }
 
         public override User ResultToObject(DataRow data)

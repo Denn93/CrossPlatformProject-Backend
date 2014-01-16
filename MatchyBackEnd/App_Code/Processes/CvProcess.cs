@@ -11,7 +11,7 @@ namespace Processes
     /// </summary>
     public class CvProcess : AProcess<Cv>
     {
-        private readonly List<String> _defaultSelect = new List<string> { "cv_id", "crawlerID", "education_id", "source_id", "name", "personal", "interests", "jobrequirements", 
+        public static readonly List<String> _defaultSelectCv = new List<string> { "cv_id", "crawlerID", "education_id", "source_id", "name", "personal", "interests", "jobrequirements", 
                                                                           "email", "city", "place_date", "hours", "profession", "discipline", "province", "age", "experience", "education", "sex"};
 
         public override Cv[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "")
@@ -26,7 +26,7 @@ namespace Processes
             }
 
             if (id >= 0)
-                result = _dbHandler.Select(_defaultSelect, "Cv", where);                
+                result = _dbHandler.Select(_defaultSelectCv, "Cv", where);                
             else if (id == -1)
                 return new Cv[] { new Cv() };
 
@@ -73,16 +73,6 @@ namespace Processes
             AddBranches(resultId);
 
             return resultId;
-        }
-
-        public override int Delete(int id, List<KeyValuePair<string, string>> where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Cv obj)
-        {
-            throw new NotImplementedException();
         }
 
         public override Cv ResultToObject(DataRow data)

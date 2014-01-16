@@ -17,9 +17,15 @@ namespace Processes
 
         public abstract TDataAccessObject[] Get(int id = 0, List<KeyValuePair<String, String>> where = null, KeyValuePair<String, String> whereOperator = new KeyValuePair<String, String>(), String other = "");
         public abstract int Add(TDataAccessObject obj);
-        public abstract int Delete(int id, List<KeyValuePair<String, String>> where = null);
-        public abstract int Update(TDataAccessObject obj);
-
         public abstract TDataAccessObject ResultToObject(DataRow data);
+
+        public virtual int Delete(int id, List<KeyValuePair<String, String>> where = null)
+        {
+            throw new NotSupportedException();
+        }
+        public virtual int Update(TDataAccessObject obj)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using DataAccessObjects;
 
 namespace CrawlerBatch.Mappers
@@ -15,7 +16,16 @@ namespace CrawlerBatch.Mappers
         /// <returns>Inserted id</returns>
         public override int Insert(Company company)
         {
-            int insertId = MatchyBackend.AddCompany(MapToService(company));
+            int insertId = 0;
+            try
+            {
+                insertId = MatchyBackend.AddCompany(MapToService(company));
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("Backend Time out. Reconnecting.....: " + ex.Message);
+            }
+            
 
             if (insertId == 0)
                 Console.WriteLine("Company not inserted. Error, Error");

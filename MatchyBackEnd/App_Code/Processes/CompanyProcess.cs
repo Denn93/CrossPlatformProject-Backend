@@ -65,16 +65,6 @@ namespace Processes
             return resultId;
         }
 
-        public override int Delete(int id, List<KeyValuePair<String, String>> where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Company obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override Company ResultToObject(DataRow data)
         {
             var company = new Company();

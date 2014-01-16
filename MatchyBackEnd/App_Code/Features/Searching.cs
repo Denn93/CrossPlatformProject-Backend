@@ -16,12 +16,12 @@ namespace Features
         private readonly List<String> _defaultSelectCv = new List<string> { "c.cv_id", "c.crawlerID", "c.education_id", "c.source_id", "c.name", "c.personal", "c.interests", "c.jobrequirements", 
                                                                           "c.email", "c.city", "c.place_date", "c.hours", "c.profession", "c.discipline", "c.province", "c.age", "c.experience", "c.education", "c.sex"};
 
-        public static string BaseInnerJoinsJob = "INNER JOIN Education e On e.education_ID = j.education_ID " + 
+        public const string BaseInnerJoinsJob = "INNER JOIN Education e On e.education_ID = j.education_ID " + 
                                                 "INNER JOIN DetailJob dtjob ON dtjob.job_ID = j.job_ID " + 
                                                 "INNER JOIN Company c ON c.company_ID = j.companyID " + 
                                                 "INNER JOIN Source s ON s.source_ID = j.source_ID ";
 
-        public static string BaseInnerJoinsCv = "INNER JOIN Education e On e.education_ID = c.education_ID " + 
+        public const string BaseInnerJoinsCv = "INNER JOIN Education e On e.education_ID = c.education_ID " + 
                                                "INNER JOIN Source s ON s.source_ID = c.source_ID ";
 
         public const string BaseWhereLikeJob = "(j.title LIKE {0} OR " +
@@ -78,6 +78,8 @@ namespace Features
         {
             var result = string.Empty;
             var isFirstOption = true;
+            var innerJoinsChanged = false;
+            var newBaseInnerJoinsJobs = string.Empty;
 
             string where = "WHERE ";
 
@@ -120,14 +122,15 @@ namespace Features
 
             if (_search.Branche != null)
             {
-                BaseInnerJoinsJob += "INNER JOIN Branche_jobs brJobs ON brJobs.job_ID = j.job_id";
-
+                newBaseInnerJoinsJobs = BaseInnerJoinsJob + " INNER JOIN Branche_jobs brJobs ON brJobs.job_ID = j.job_id ";
+                innerJoinsChanged = true;
+                
                 where += (isFirstOption)
                               ? String.Format("brJobs.branche_ID = {0} ", _search.Branche.branche_ID)
                               : String.Format("AND brJobs.branche_ID = {0} ", _search.Branche.branche_ID);
             }
 
-            result = String.Format("SELECT {0} FROM Jobs j {1} {2} ", String.Join(",", _defaultSelectJob.ToArray()), BaseInnerJoinsJob, where);
+            result = String.Format("SELECT {0} FROM Jobs j {1} {2} ", String.Join(",", _defaultSelectJob.ToArray()), (!innerJoinsChanged) ? BaseInnerJoinsJob : newBaseInnerJoinsJobs, where);
 
 
             return result;
@@ -137,6 +140,8 @@ namespace Features
         {
             var result = string.Empty;
             var isFirstOption = true;
+            var innerJoinsChanged = false;
+            var newBaseInnerJoinsCvs = string.Empty;
 
             string where = "WHERE ";
 
@@ -173,14 +178,16 @@ namespace Features
 
             if (_search.Branche != null)
             {
-                BaseInnerJoinsCv += "INNER JOIN Branche_cvs brCvs ON brCvs.cv_ID = c.cv_id ";
+                newBaseInnerJoinsCvs = BaseInnerJoinsCv + " INNER JOIN Branche_cvs brCvs ON brCvs.cv_ID = c.cv_id ";
+                innerJoinsChanged = true;
+                
 
                 where += (isFirstOption)
                               ? String.Format("brCvs.branche_ID = {0} ", _search.Branche.branche_ID)
                               : String.Format("AND brCvs.branche_ID = {0} ", _search.Branche.branche_ID);
             }
 
-            result = String.Format("SELECT {0} FROM Cv c {1} {2}", String.Join(",", _defaultSelectCv.ToArray()), BaseInnerJoinsCv, where);
+            result = String.Format("SELECT {0} FROM Cv c {1} {2}", String.Join(",", _defaultSelectCv.ToArray()), (!innerJoinsChanged) ? BaseInnerJoinsCv : newBaseInnerJoinsCvs, where);
 
             return result;
         }

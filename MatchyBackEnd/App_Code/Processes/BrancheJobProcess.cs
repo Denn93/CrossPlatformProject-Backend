@@ -55,16 +55,6 @@ namespace Processes
             return 0;
         }
 
-        public override int Delete(int id, List<KeyValuePair<string, string>> @where = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(BrancheJob obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override BrancheJob ResultToObject(DataRow data)
         {
             var brancheJob = new BrancheJob();

@@ -1,38 +1,53 @@
 ﻿<RecentFiles>
   <RecentFiles>
     <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:Bin/f:log4net.xml" caret="1512309" fromTop="27" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/f:App.config" caret="0" fromTop="0" />
     <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/f:log4net.config" caret="574" fromTop="13" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CompanyProcess.cs" caret="3150" fromTop="41" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:EducationProcess.cs" caret="2342" fromTop="32" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:DetailJobProcess.cs" caret="2559" fromTop="36" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:MatchesProcess.cs" caret="2538" fromTop="44" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:UserProcess.cs" caret="3716" fromTop="68" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:SourceProcess.cs" caret="2297" fromTop="47" />
     <File id="DD18D715-712C-4786-B14F-3BF7AA307F5B/f:Search.cs" caret="327" fromTop="17" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/f:brancheList.txt" caret="0" fromTop="0" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/f:MatchyService.cs" caret="6089" fromTop="7" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Database/f:DbHandler.cs" caret="5601" fromTop="42" />
     <File id="DD18D715-712C-4786-B14F-3BF7AA307F5B/f:Job.cs" caret="0" fromTop="0" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CvProcess.cs" caret="5727" fromTop="20" />
-    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Crawlers/f:CvEnVacatureBankNl.cs" caret="2919" fromTop="11" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Database/f:DbHandler.cs" caret="5600" fromTop="34" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheProcess.cs" caret="3768" fromTop="25" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Features/f:Searching.cs" caret="7674" fromTop="179" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/f:MatchyService.cs" caret="6065" fromTop="33" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:AProcess.cs" caret="303" fromTop="14" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:JobProcess.cs" caret="3107" fromTop="40" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="682" fromTop="12" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CvMapper.cs" caret="0" fromTop="0" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="900" fromTop="26" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:JobMapper.cs" caret="0" fromTop="0" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="631" fromTop="0" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="971" fromTop="22" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:AProcess.cs" caret="695" fromTop="19" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheCvProcess.cs" caret="862" fromTop="11" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheJobProcess.cs" caret="2090" fromTop="16" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheProcess.cs" caret="2039" fromTop="19" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CompanyProcess.cs" caret="2844" fromTop="12" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:DetailJobProcess.cs" caret="2251" fromTop="10" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:EducationProcess.cs" caret="2033" fromTop="12" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:MatchesProcess.cs" caret="2326" fromTop="21" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:SourceProcess.cs" caret="1989" fromTop="20" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/f:Web.config" caret="1310" fromTop="34" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Features/f:Searching.cs" caret="0" fromTop="0" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:JobProcess.cs" caret="1949" fromTop="27" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:UserProcess.cs" caret="1744" fromTop="10" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CvProcess.cs" caret="1249" fromTop="28" />
   </RecentFiles>
   <RecentEdits>
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:JobProcess.cs" caret="3428" fromTop="39" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CvProcess.cs" caret="4090" fromTop="37" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:AProcess.cs" caret="865" fromTop="22" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheProcess.cs" caret="2348" fromTop="30" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CompanyProcess.cs" caret="3150" fromTop="41" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:EducationProcess.cs" caret="2342" fromTop="32" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:DetailJobProcess.cs" caret="2559" fromTop="36" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:MatchesProcess.cs" caret="2538" fromTop="44" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:SourceProcess.cs" caret="2297" fromTop="47" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:UserProcess.cs" caret="1870" fromTop="47" />
     <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Database/f:DbHandler.cs" caret="4245" fromTop="34" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Features/f:Searching.cs" caret="7674" fromTop="45" />
-    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/f:MatchyService.cs" caret="5748" fromTop="18" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/f:MatchyService.cs" caret="6168" fromTop="21" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Features/f:Searching.cs" caret="9988" fromTop="6" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:EducationMapper.cs" caret="971" fromTop="22" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:CompanyMapper.cs" caret="682" fromTop="18" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:DetailJobMapper.cs" caret="900" fromTop="26" />
+    <File id="E4B6CCED-60C7-4773-A660-B533C8D8EE39/d:Mappers/f:SourceMapper.cs" caret="731" fromTop="21" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:AProcess.cs" caret="695" fromTop="19" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheCvProcess.cs" caret="2034" fromTop="12" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheJobProcess.cs" caret="2090" fromTop="16" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:BrancheProcess.cs" caret="2039" fromTop="19" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CompanyProcess.cs" caret="2844" fromTop="12" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:DetailJobProcess.cs" caret="2251" fromTop="10" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:EducationProcess.cs" caret="2033" fromTop="12" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:JobProcess.cs" caret="3152" fromTop="17" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:MatchesProcess.cs" caret="2326" fromTop="21" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:SourceProcess.cs" caret="1989" fromTop="20" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/f:Web.config" caret="1310" fromTop="34" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:UserProcess.cs" caret="3026" fromTop="41" />
+    <File id="A30781BD-CE46-4C09-9CB4-ADE2BB52C630/d:App_Code/d:Processes/f:CvProcess.cs" caret="1249" fromTop="27" />
   </RecentEdits>
 </RecentFiles>
