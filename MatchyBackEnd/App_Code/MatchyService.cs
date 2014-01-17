@@ -87,6 +87,12 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public Cv[] GetCvByLimit(int begin)
+    {
+        return new CvProcess().Get(0, null, new KeyValuePair<string, string>(), String.Format("LIMIT {0},{1}", begin, 10));
+    }
+
+    [WebMethod]
     public int UpdateCv(Cv cv)
     {
         return new CvProcess().Update(cv);

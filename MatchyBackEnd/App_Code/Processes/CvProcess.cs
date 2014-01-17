@@ -26,7 +26,7 @@ namespace Processes
             }
 
             if (id >= 0)
-                result = _dbHandler.Select(_defaultSelectCv, "Cv", where);                
+                result = _dbHandler.Select(_defaultSelectCv, "Cv", where, whereOperator, other);                
             else if (id == -1)
                 return new Cv[] { new Cv() };
 

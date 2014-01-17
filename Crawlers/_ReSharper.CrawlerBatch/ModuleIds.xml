@@ -2,4 +2,5 @@
   <Module PersistentId="DD18D715-712C-4786-B14F-3BF7AA307F5B" ModuleId="DataAccessObjects" />
   <Module PersistentId="A30781BD-CE46-4C09-9CB4-ADE2BB52C630" ModuleId="MatchyBackEnd_1" />
   <Module PersistentId="E4B6CCED-60C7-4773-A660-B533C8D8EE39" ModuleId="CrawlerBatch" />
+  <Module PersistentId="5ABDFB27-3B7C-41BF-9B11-EDCF84F28167" ModuleId="CrawlerBatchTests" />
 </Modules>

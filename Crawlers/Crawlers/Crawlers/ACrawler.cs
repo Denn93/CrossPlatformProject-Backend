@@ -9,7 +9,7 @@ using DataAccessObjects;
 
 namespace CrawlerBatch.Crawlers
 {
-    abstract class ACrawler
+    public abstract class ACrawler
     {
         protected const string CrawlerStarted = "Crawler {0} has started";
         protected const string CrawlerCompleted = "Crawler {0} has been completed";
@@ -202,7 +202,7 @@ namespace CrawlerBatch.Crawlers
         /// <summary>
         /// Url Getter Setter
         /// </summary>
-        public string Url { protected get; set; }
+        public string Url { get; set; }
         
         /// <summary>
         /// CurrentPage Getter Setter
@@ -238,6 +238,8 @@ namespace CrawlerBatch.Crawlers
         /// Crawler Name Getter Setter
         /// </summary>
         public String Name { get; set; }
+
+        public Boolean HasStarted { get; set; }
 
         #endregion
     }

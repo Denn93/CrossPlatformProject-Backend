@@ -5,7 +5,7 @@ using Match = System.Text.RegularExpressions.Match;
 
 namespace CrawlerBatch.Crawlers
 {
-    class CvEnVacatureBankNl : ACrawler
+    public class CvEnVacatureBankNl : ACrawler
     {
         private const String BaseURL = "http://cvenvacaturebank.nl{0}";
         private const String URL = "http://cvenvacaturebank.nl/cv?o={0}&sector=25";

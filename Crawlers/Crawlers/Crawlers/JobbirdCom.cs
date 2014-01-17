@@ -7,7 +7,7 @@ using Match = System.Text.RegularExpressions.Match;
 
 namespace CrawlerBatch.Crawlers
 {
-    class JobbirdCom : ACrawler
+    public class JobbirdCom : ACrawler
     {
         private const String CrawlerName = "JobBirdCom";
 
