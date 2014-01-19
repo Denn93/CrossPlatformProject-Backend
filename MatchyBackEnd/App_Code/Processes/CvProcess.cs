@@ -52,11 +52,11 @@ namespace Processes
             insertData.Add(new KeyValuePair<string, string>("crawlerID", obj.CrawlerId.ToString()));
             insertData.Add(new KeyValuePair<string, string>("education_ID", obj.EducationLevel.EducationId.ToString()));
             insertData.Add(new KeyValuePair<string, string>("source_ID", obj.Source.SourceId.ToString()));
-            insertData.Add(new KeyValuePair<string, string>("name", "test"));
+            insertData.Add(new KeyValuePair<string, string>("name", obj.Name ?? "test"));
             insertData.Add(new KeyValuePair<string, string>("personal", obj.Personal));
             insertData.Add(new KeyValuePair<string, string>("interests", obj.Interests));
             insertData.Add(new KeyValuePair<string, string>("jobrequirements", obj.JobRequirements));
-            insertData.Add(new KeyValuePair<string, string>("email", "test@test.com"));
+            insertData.Add(new KeyValuePair<string, string>("email", obj.Email ?? "test@test.com"));
             insertData.Add(new KeyValuePair<string, string>("city", obj.City));
             insertData.Add(new KeyValuePair<string, string>("place_date", obj.Date));
             insertData.Add(new KeyValuePair<string, string>("hours", obj.Hours));

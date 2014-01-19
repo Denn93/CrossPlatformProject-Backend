@@ -48,25 +48,33 @@ namespace Processes
             if (result.Length >= 1)
                 return 2; // User already exists
 
-            if (obj.UserCv != null)
+            if (obj.UserCv.Name != null)
             {
+
+                obj.UserCv.Source.SourceId = new SourceProcess().Add(obj.UserCv.Source);
                 int cvId = new CvProcess().Add(obj.UserCv);
                 obj.UserCv.CvID = cvId;
             }
 
-            if (obj.UserCompany != null)
+            if (obj.UserCompany.CompanyName != null)
             {
                 int companyId = new CompanyProcess().Add(obj.UserCompany);
                 obj.UserCompany.CompanyID = companyId;
             }
 
             var insertData = new List<KeyValuePair<String, String>>();
-                
+
             if (obj.UserCv.CvID == 0)
+            {
+                insertData.Add(new KeyValuePair<string, string>("cv_ID", null));
                 insertData.Add(new KeyValuePair<string, string>("company_ID", obj.UserCompany.CompanyID.ToString()));
+            }
             else
+            {
+                insertData.Add(new KeyValuePair<string, string>("company_ID", null));
                 insertData.Add(new KeyValuePair<string, string>("cv_ID", obj.UserCv.CvID.ToString()));
-                
+            }
+
             insertData.Add(new KeyValuePair<string, string>("password", obj.Pass));
             insertData.Add(new KeyValuePair<string, string>("email", obj.Email));
             insertData.Add(new KeyValuePair<string, string>("date", obj.BirthDay));
