@@ -16,23 +16,10 @@ using Processes;
 // [System.Web.Script.Services.ScriptService]
 public class MatchyService : System.Web.Services.WebService
 {
-    //Adds new user to database after checking if it exsists
     [WebMethod]
     public int AddUser(User user)
     {
         return new UserProcess().Add(user);
-    }
-
-    [WebMethod]
-    public int UpdateUser(User user)
-    {
-        return new UserProcess().Update(user);
-    }
-
-    [WebMethod]
-    public int DeleteUser(User user)
-    {
-        return new UserProcess().Delete(user.ProfileId);
     }
 
     [WebMethod]
@@ -54,24 +41,18 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public Job[] GetJobByLimit(int begin)
+    {
+        return new JobProcess().Get(0, null, new KeyValuePair<string, string>(), String.Format("LIMIT {0},{1}", begin, 10));
+    }
+
+    [WebMethod]
     public Job[] GetJobByCompany(int companyID)
     {
         var where = new List<KeyValuePair<string, string>>();
         where.Add(new KeyValuePair<string, string>("companyID", companyID.ToString()));
 
         return new JobProcess().Get(0, where);
-    }
-
-    [WebMethod]
-    public int UpdateJob(Job job)
-    {
-        return new JobProcess().Update(job);
-    }
-
-    [WebMethod]
-    public int DeleteJob(Job job)
-    {
-        return new JobProcess().Delete(job.JobID);
     }
 
     [WebMethod]
@@ -92,17 +73,6 @@ public class MatchyService : System.Web.Services.WebService
         return new CvProcess().Get(0, null, new KeyValuePair<string, string>(), String.Format("LIMIT {0},{1}", begin, 10));
     }
 
-    [WebMethod]
-    public int UpdateCv(Cv cv)
-    {
-        return new CvProcess().Update(cv);
-    }
-
-    [WebMethod]
-    public int DeleteCv(Cv cv)
-    {
-        return new CvProcess().Delete(cv.CvID);
-    }
 
     [WebMethod]
     public int AddMatch(Match match)
@@ -159,18 +129,6 @@ public class MatchyService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public int DeleteEdu(Education education)
-    {
-        return new EducationProcess().Delete(education.EducationId);
-    }
-
-    [WebMethod]
-    public int UpdateEdu(Education education)
-    {
-        return new EducationProcess().Update(education);
-    }
-
-    [WebMethod]
     public Source[] GetSource(int id)
     {
         return new SourceProcess().Get(id);
@@ -180,18 +138,6 @@ public class MatchyService : System.Web.Services.WebService
     public int AddSource(Source source)
     {
         return new SourceProcess().Add(source);
-    }
-
-    [WebMethod]
-    public int DeleteSource(Source source)
-    {
-        return new SourceProcess().Delete(source.SourceId);
-    }
-
-    [WebMethod]
-    public int UpdateSource(Source source)
-    {
-        return new SourceProcess().Update(source);
     }
 
     [WebMethod]
@@ -205,18 +151,6 @@ public class MatchyService : System.Web.Services.WebService
     public int AddCompany(Company company)
     {
         return new CompanyProcess().Add(company);
-    }
-
-    [WebMethod]
-    public int DeleteCompany(Company company)
-    {
-        return new CompanyProcess().Delete(company.CompanyID);
-    }
-
-    [WebMethod]
-    public int UpdateCompany(Company company)
-    {
-        return new CompanyProcess().Update(company);
     }
 
     [WebMethod]

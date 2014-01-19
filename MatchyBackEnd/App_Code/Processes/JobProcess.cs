@@ -26,7 +26,7 @@ namespace Processes
             }
 
             if (id >= 0)
-                result = _dbHandler.Select(_defaultSelect, "jobs", where);
+                result = _dbHandler.Select(_defaultSelect, "jobs", where, whereOperator, other);
             else if (id == -1)
                 return new Job[] { new Job() };
 
